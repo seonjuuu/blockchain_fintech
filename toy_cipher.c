@@ -11,3 +11,5 @@ uint8_t F(uint8_t finput)
 
     return finput2;
 }
+
+uint16_t toy_cipher(uint16_t pt , uint16_t key)
