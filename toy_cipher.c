@@ -33,3 +33,11 @@ uint16_t toy_cipher(uint16_t pt , uint16_t key)
     return ct;
 
 }
+
+int main() {
+    uint16_t plaintext = 0x5A3C;
+    uint16_t key = 0x7B28;
+
+    printf("%x",toy_cipher(plaintext, key));
+
+}
