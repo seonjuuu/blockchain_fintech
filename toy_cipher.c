@@ -13,3 +13,23 @@ uint8_t F(uint8_t finput)
 }
 
 uint16_t toy_cipher(uint16_t pt , uint16_t key)
+{
+    pt = pt^key;
+
+    uint8_t R1 = (pt&0xff);
+    uint8_t L1 = (pt>>8)&0xff;
+    //printf("%02x %02x\n",L1,R1);
+
+    uint8_t R2 = L1^F(R1);
+    uint8_t L2 = R1;
+
+    uint8_t L3 = L2^F(R2);
+    uint8_t R3 = R2;
+    //printf("%02x %02x\n",L3,R3);
+
+
+    uint16_t ct = (L3 << 8) ^ R3;
+
+    return ct;
+
+}
