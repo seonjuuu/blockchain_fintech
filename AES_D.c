@@ -57,3 +57,7 @@ static const uint8_t Rcon[11] = {
 
 
 void RoundkeyGen(uint8_t *key)
+{   
+	memcpy(Rkey[0], key, sizeof(uint8_t)*16); //0round
+
+}
