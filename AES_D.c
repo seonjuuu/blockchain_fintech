@@ -70,5 +70,39 @@ void RoundkeyGen(uint8_t *key)
 	// 2 6 10 (14)    (2/15)
 	// 3 7 11 (15)    (3/12)
 
+	//주의, 일렬로 되어있음
+    Rkey[i][0] = Rkey[i-1][13];
+    Rkey[i][1] = Rkey[i-1][14];
+    Rkey[i][2] = Rkey[i-1][15];
+    Rkey[i][3] = Rkey[i-1][12];
+
+	 //step2 : subbyte
+	 Rkey[i][0] = sbox[Rkey[i][0]];
+	 Rkey[i][1] = sbox[Rkey[i][1]];
+	 Rkey[i][2] = sbox[Rkey[i][2]];
+	 Rkey[i][3] = sbox[Rkey[i][3]];
+
+	//step3 : xor
+	Rkey[i][0] = Rkey[i][0] ^ Rkey[i - 1][0] ^ Rcon[i];
+	Rkey[i][1] = Rkey[i][1] ^ Rkey[i - 1][1];
+	Rkey[i][2] = Rkey[i][2] ^ Rkey[i - 1][2];
+	Rkey[i][3] = Rkey[i][3] ^ Rkey[i - 1][3];
+
+	//step4 :
+	Rkey[i][4] = Rkey[i][0] ^ Rkey[i - 1][4];
+	Rkey[i][5] = Rkey[i][1] ^ Rkey[i - 1][5];
+	Rkey[i][6] = Rkey[i][2] ^ Rkey[i - 1][6];
+	Rkey[i][7] = Rkey[i][3] ^ Rkey[i - 1][7];
+
+	Rkey[i][8] = Rkey[i][4] ^ Rkey[i - 1][8];
+	Rkey[i][9] = Rkey[i][5] ^ Rkey[i - 1][9];
+	Rkey[i][10] = Rkey[i][6] ^ Rkey[i - 1][10];
+	Rkey[i][11] = Rkey[i][7] ^ Rkey[i - 1][11];
+
+	Rkey[i][12] = Rkey[i][8] ^ Rkey[i - 1][12];
+	Rkey[i][13] = Rkey[i][9] ^ Rkey[i - 1][13];
+	Rkey[i][14] = Rkey[i][10] ^ Rkey[i - 1][14];
+	Rkey[i][15] = Rkey[i][11] ^ Rkey[i - 1][15];
+
 	}
 }
