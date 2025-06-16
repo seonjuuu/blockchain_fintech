@@ -141,3 +141,5 @@ uint8_t InverseMc(uint8_t a, uint8_t x)
 	res ^= ((x >> 3) & 1) * ((((a >> 5) & 1) * 0x1b) ^ (((a >> 6) & 1) * 0x36) ^ (((a >> 7) & 1) * 0x6c) ^ (a << 3)); //a*x^3
 	return res;
 }
+
+//암호화 함수
