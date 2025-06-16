@@ -60,4 +60,15 @@ void RoundkeyGen(uint8_t *key)
 {   
 	memcpy(Rkey[0], key, sizeof(uint8_t)*16); //0round
 
+	for(int i= 1; i<Nr+1; i++)
+    {
+	
+		//step1 : rotate
+    // == ith == => == i+1 ==
+	// 0 4 8 (12) =>  (0/13)     // i th 일 때 13이 i+1 th 일 때는 0의 자리로(위로 한칸 올라가므로)
+	// 1 5 9 (13)     (1/14)
+	// 2 6 10 (14)    (2/15)
+	// 3 7 11 (15)    (3/12)
+
+	}
 }
