@@ -119,3 +119,12 @@ void PrintRKey()
         printf("\n");
     }
 }
+
+void PrintValue(uint8_t* ct)
+{
+	for (int j = 0; j < Nb; j++)
+	{
+		printf("%02x ", ct[j]);
+	}
+	printf("\n");
+}
