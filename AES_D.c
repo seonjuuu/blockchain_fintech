@@ -131,3 +131,13 @@ void PrintValue(uint8_t* ct)
 
 // 복구화 mixcolum는 함수 이용
 // InverseMc
+uint8_t InverseMc(uint8_t a, uint8_t x)
+{
+    uint8_t res = 0;
+
+	res = (x & 1) * a;          // a*1  
+	res ^= ((x >> 1) & 1) * ((((a >> 7) & 1) * 0x1b) ^ (a << 1));  //a*x^1
+	res ^= ((x >> 2) & 1) * ((((a >> 6) & 1) * 0x1b) ^ (((a >> 7) & 1) * 0x36) ^ (a << 2));  //a*x^2
+	res ^= ((x >> 3) & 1) * ((((a >> 5) & 1) * 0x1b) ^ (((a >> 6) & 1) * 0x36) ^ (((a >> 7) & 1) * 0x6c) ^ (a << 3)); //a*x^3
+	return res;
+}
