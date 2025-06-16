@@ -128,3 +128,6 @@ void PrintValue(uint8_t* ct)
 	}
 	printf("\n");
 }
+
+// 복구화 mixcolum는 함수 이용
+// InverseMc
