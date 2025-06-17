@@ -145,5 +145,7 @@ uint8_t InverseMc(uint8_t a, uint8_t x)
 //암호화 함수
 void AES_enc(uint8_t *ct, uint8_t *pt)
 {
+	uint32_t w[4] = { 0, };
+	uint8_t t0, t1, t2, t3, t4, t5, t6, t7, tmp1, tmp2, tmp3, tmp4;   
 
 }
