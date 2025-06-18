@@ -560,5 +560,4 @@ void main()
 	}
 	printf("DES = FiN:");
 	PrintValue(cttmp); 
-	
 }
