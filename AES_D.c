@@ -365,4 +365,200 @@ void main()
     }
     printf("DES = add round key:");
     PrintValue(cttmp);
+
+	// 9Round ~ 1Round (0Round가 마지막 Round)
+    for(int nrnd = 0; nrnd < Nr-1; nrnd++)
+    {
+        //inverse shift row
+		// w[0] =ct[0] ct[4] ct[8] ct[12]
+		// 변화X
+		for (int j = 0; j < Nw; j++)
+		{
+			w[j] = (cttmp[j] << 24) ^ (cttmp[4 + j] << 16) ^ (cttmp[8 + j] << 8) ^ (cttmp[12 + j]);
+		}
+		for (int j = 0; j < Nw; j++)
+		{
+			printf("w[%d]:%x \n", j, w[j]);
+		}
+
+        //rotate (변화o , 오른쪽으로)
+		w[1] = (w[1] >> 8) ^ ((w[1] & 0x000000ff) << 24);
+		w[2] = (w[2] >> 16) ^ ((w[2] & 0x0000ffff) << 16);
+		w[3] = (w[3] >> 24) ^ ((w[3] & 0x00ffffff) << 8);
+
+        //32bit를 8bit로(변화X)
+		for (int j = 0; j < Nw; j++)
+		{
+			cttmp[j] = ((w[j] & 0xff000000) >> 24) & 0xff;               
+			cttmp[4 + j] = ((w[j] & 0x00ff0000) >> 16) & 0xff;
+			cttmp[8 + j] = ((w[j] & 0x0000ff00) >> 8) & 0xff;
+			cttmp[12 + j] = ((w[j] & 0x000000ff)) & 0xff;
+		}
+		printf("DES = Inverse sr:");
+		PrintValue(cttmp);
+
+		//subbyte
+		for (int j = 0; j < Nb; j++)
+		{
+			cttmp[j] = rsbox[cttmp[j]];
+		}
+
+        //addroundkey
+        for(int i=0; i< Nb; i++)
+        {
+            cttmp[i] = cttmp[i] ^ Rkey[Nr-1-nrnd][i]; //'Nr-1-nrnd' 주의  
+        }
+		printf("DES = Add round:");
+		PrintValue(cttmp);
+
+        //inverse mixcolum
+		t0 = InverseMc(cttmp[0], 0x0e);
+		t0 ^= InverseMc(cttmp[1], 0x0b);
+		t0 ^= InverseMc(cttmp[2], 0x0d);
+		t0 ^= InverseMc(cttmp[3], 0x09);
+		
+		t3 = InverseMc(cttmp[0], 0x09);
+		t3 ^= InverseMc(cttmp[1], 0x0e);
+		t3 ^= InverseMc(cttmp[2], 0x0b);
+		t3 ^= InverseMc(cttmp[3], 0x0d);
+
+		t5 = InverseMc(cttmp[0], 0x0d);
+		t5 ^= InverseMc(cttmp[1], 0x09);
+		t5 ^= InverseMc(cttmp[2], 0x0e);
+		t5 ^= InverseMc(cttmp[3], 0x0b);
+
+		t7 = InverseMc(cttmp[0], 0x0b);
+		t7 ^= InverseMc(cttmp[1], 0x0d);
+		t7 ^= InverseMc(cttmp[2], 0x09);
+		t7 ^= InverseMc(cttmp[3], 0x0e);
+
+		cttmp[0] = t0;
+		cttmp[1] = t3;
+		cttmp[2] = t5;
+		cttmp[3] = t7;
+
+
+		t0 = InverseMc(cttmp[4], 0x0e);
+		t0 ^= InverseMc(cttmp[5], 0x0b);
+		t0 ^= InverseMc(cttmp[6], 0x0d);
+		t0 ^= InverseMc(cttmp[7], 0x09);
+
+		t3 = InverseMc(cttmp[4], 0x09);
+		t3 ^= InverseMc(cttmp[5], 0x0e);
+		t3 ^= InverseMc(cttmp[6], 0x0b);
+		t3 ^= InverseMc(cttmp[7], 0x0d);
+
+		t5 = InverseMc(cttmp[4], 0x0d);
+		t5 ^= InverseMc(cttmp[5], 0x09);
+		t5 ^= InverseMc(cttmp[6], 0x0e);
+		t5 ^= InverseMc(cttmp[7], 0x0b);
+
+		t7 = InverseMc(cttmp[4], 0x0b);
+		t7 ^= InverseMc(cttmp[5], 0x0d);
+		t7 ^= InverseMc(cttmp[6], 0x09);
+		t7 ^= InverseMc(cttmp[7], 0x0e);
+
+		cttmp[4] = t0;
+		cttmp[5] = t3;
+		cttmp[6] = t5;
+		cttmp[7] = t7;
+
+		t0 = InverseMc(cttmp[8], 0x0e);
+		t0 ^= InverseMc(cttmp[9], 0x0b);
+		t0 ^= InverseMc(cttmp[10], 0x0d);
+		t0 ^= InverseMc(cttmp[11], 0x09);
+
+		t3 = InverseMc(cttmp[8], 0x09);
+		t3 ^= InverseMc(cttmp[9], 0x0e);
+		t3 ^= InverseMc(cttmp[10], 0x0b);
+		t3 ^= InverseMc(cttmp[11], 0x0d);
+
+		t5 = InverseMc(cttmp[8], 0x0d);
+		t5 ^= InverseMc(cttmp[9], 0x09);
+		t5 ^= InverseMc(cttmp[10], 0x0e);
+		t5 ^= InverseMc(cttmp[11], 0x0b);
+
+		t7 = InverseMc(cttmp[8], 0x0b);
+		t7 ^= InverseMc(cttmp[9], 0x0d);
+		t7 ^= InverseMc(cttmp[10], 0x09);       
+		t7 ^= InverseMc(cttmp[11], 0x0e);
+
+		cttmp[8] = t0;
+		cttmp[9] = t3;
+		cttmp[10] = t5;
+		cttmp[11] = t7;
+
+		t0 = InverseMc(cttmp[12], 0x0e);
+		t0 ^= InverseMc(cttmp[13], 0x0b);
+		t0 ^= InverseMc(cttmp[14], 0x0d);
+		t0 ^= InverseMc(cttmp[15], 0x09);
+
+		t3 = InverseMc(cttmp[12], 0x09);
+		t3 ^= InverseMc(cttmp[13], 0x0e);
+		t3 ^= InverseMc(cttmp[14], 0x0b);
+		t3 ^= InverseMc(cttmp[15], 0x0d);
+
+		t5 = InverseMc(cttmp[12], 0x0d);
+		t5 ^= InverseMc(cttmp[13], 0x09);
+		t5 ^= InverseMc(cttmp[14], 0x0e);
+		t5 ^= InverseMc(cttmp[15], 0x0b);
+
+		t7 = InverseMc(cttmp[12], 0x0b);
+		t7 ^= InverseMc(cttmp[13], 0x0d);
+		t7 ^= InverseMc(cttmp[14], 0x09);
+		t7 ^= InverseMc(cttmp[15], 0x0e);
+
+		cttmp[12] = t0;
+		cttmp[13] = t3;
+		cttmp[14] = t5;
+		cttmp[15] = t7;
+
+
+		PrintValue(cttmp);
+
+
+    }//괄호 조심 ! (여기까지 for문, 마지막 round는 for문 벗어나서)
+
+	//round 0
+	// 변화 x
+	for (int j = 0; j < Nw; j++)
+	{
+		w[j] = (cttmp[j] << 24) ^ (cttmp[4 + j] << 16) ^ (cttmp[8 + j] << 8) ^ (cttmp[12 + j]);
+	}
+	for (int j = 0; j < Nw; j++)
+    	{
+		printf("w[%d]:%x \n", j, w[j]);
+	}
+
+	//rotate 
+	w[1] = (w[1] >> 8) ^ ((w[1] & 0x000000ff) << 24);
+	w[2] = (w[2] >> 16) ^ ((w[2] & 0x0000ffff) << 16);
+	w[3] = (w[3] >> 24) ^ ((w[3] & 0x00ffffff) << 8);
+
+
+	//32bit를 8bit로
+	for (int j = 0; j < Nw; j++)
+	{
+		cttmp[j] = ((w[j] & 0xff000000) >> 24) & 0xff;
+		cttmp[4 + j] = ((w[j] & 0x00ff0000) >> 16) & 0xff;
+		cttmp[8 + j] = ((w[j] & 0x0000ff00) >> 8) & 0xff;
+		cttmp[12 + j] = ((w[j] & 0x000000ff)) & 0xff;
+	}
+	printf("DES = Inverse sr:");
+	PrintValue(cttmp);
+
+	//subbyte
+	for (int j = 0; j < Nb; j++)
+	{
+		cttmp[j] = rsbox[cttmp[j]];
+	}
+
+	//addroundkey(주의!! key)
+	for (int i = 0; i < Nb; i++)
+	{
+		cttmp[i] = cttmp[i] ^ Rkey[0][i];  //마스터키
+	}
+	printf("DES = FiN:");
+	PrintValue(cttmp); 
+	
 }
