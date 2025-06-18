@@ -148,4 +148,9 @@ void AES_enc(uint8_t *ct, uint8_t *pt)
 	uint32_t w[4] = { 0, };
 	uint8_t t0, t1, t2, t3, t4, t5, t6, t7, tmp1, tmp2, tmp3, tmp4;   
 
+	// 0Round ct<-pt^Key (AddRoundKey)
+    for(int i=0; i<Nb; i++)
+    {
+        ct[i] = pt[i] ^ Rkey[0][i];  // key[i] -> Rkey[0][i] , key는 전역변수가 아니므로 mempy를 통해 Rkey[0]에 마스터키를 저장해놓은거 이용
+    }
 }
