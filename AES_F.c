@@ -106,3 +106,6 @@ void PrintValue(uint8_t* ct)
 	}
 	printf("\n");
 }
+
+//암호화 함수
+void AES_enc(uint8_t *ct, uint8_t *pt)
