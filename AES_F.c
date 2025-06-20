@@ -258,4 +258,51 @@ void AES_enc(uint8_t *ct, uint8_t *pt)
 		}
 
     } // Nr-1
+
+	printf("After ninthround :");
+	PrintValue(ct);
+
+	//Nr
+    //subbyte
+    for(int j=0; j<Nb; j++)
+    {
+        ct[j] = sbox[ct[j]];
+    }
+
+    //shiftrow
+
+    //byte-to-word
+    // w[0] = ct[0] ct[4] ct[8] ct[12]
+    for(int j=0; j<Nw; j++)
+    {
+        w[j] = (ct[j] << 24) ^ (ct[4+j]<<16) ^ (ct[8+j]<<8) ^ (ct[12+j]);
+    }
+    for(int j=0; j<Nw; j++)
+    {
+        printf("w[%d]:%x \n", j, w[j]);
+    }
+
+    //rotate
+	w[1] = (w[1] << 8) ^ ((w[1] & 0xff000000) >> 24);
+	w[2] = (w[2] << 16) ^ ((w[2] & 0xffff0000) >> 16);
+	w[3] = (w[3] << 24) ^ ((w[3] & 0xffffff00) >> 8);
+
+    //32bit를 다시 8bit로
+	for (int j = 0; j < Nw; j++)
+	{
+		ct[j] = ((w[j]&0xff000000) >> 24) & 0xff;               
+		ct[4+j] = ((w[j] & 0x00ff0000) >> 16) & 0xff;
+		ct[8+j] = ((w[j] & 0x0000ff00) >> 8) & 0xff;
+		ct[12+j] = ((w[j] & 0x000000ff)) & 0xff;
+	}
+    //addround
+	for (int i = 0; i < Nb; i++)
+	{
+		ct[i] = ct[i] ^ Rkey[Nr][i];
+	}
+
+	printf("cipertext :");
+	PrintValue(ct);
+
+	
 }
