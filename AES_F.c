@@ -34,5 +34,54 @@ static const uint8_t sbox[256] = {
 
 static const uint8_t Rcon[11] = {
     0x8d, 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36 };
-    
+
+void RoundkeyGen(uint8_t *key)
+{
+    memcpy(Rkey[0], key, sizeof(uint8_t)*16); //0round
+
+    for(int i= 1; i<Nr+1; i++)
+    {
+        //step1 : rotate
+    // == ith == => == i+1 ==
+	// 0 4 8 (12) =>  (0/13)     // i th 일 때 13이 i+1 th 일 때는 0의 자리로(위로 한칸 올라가므로)
+	// 1 5 9 (13)     (1/14)
+	// 2 6 10 (14)    (2/15)
+	// 3 7 11 (15)    (3/12)
+
+    //주의, 일렬로 되어있음
+    Rkey[i][0] = Rkey[i-1][13];
+    Rkey[i][1] = Rkey[i-1][14];
+    Rkey[i][2] = Rkey[i-1][15];
+    Rkey[i][3] = Rkey[i-1][12];
+
+    //step2 : subbyte
+    Rkey[i][0] = sbox[Rkey[i][0]];
+	Rkey[i][1] = sbox[Rkey[i][1]];
+	Rkey[i][2] = sbox[Rkey[i][2]];
+	Rkey[i][3] = sbox[Rkey[i][3]];
+
+    //step3 : xor
+	Rkey[i][0] = Rkey[i][0] ^ Rkey[i - 1][0] ^ Rcon[i];
+	Rkey[i][1] = Rkey[i][1] ^ Rkey[i - 1][1];
+	Rkey[i][2] = Rkey[i][2] ^ Rkey[i - 1][2];
+	Rkey[i][3] = Rkey[i][3] ^ Rkey[i - 1][3];
+
+	//step4 :
+	Rkey[i][4] = Rkey[i][0] ^ Rkey[i - 1][4];
+	Rkey[i][5] = Rkey[i][1] ^ Rkey[i - 1][5];
+	Rkey[i][6] = Rkey[i][2] ^ Rkey[i - 1][6];
+	Rkey[i][7] = Rkey[i][3] ^ Rkey[i - 1][7];
+
+	Rkey[i][8] = Rkey[i][4] ^ Rkey[i - 1][8];
+	Rkey[i][9] = Rkey[i][5] ^ Rkey[i - 1][9];
+	Rkey[i][10] = Rkey[i][6] ^ Rkey[i - 1][10];
+	Rkey[i][11] = Rkey[i][7] ^ Rkey[i - 1][11];
+
+	Rkey[i][12] = Rkey[i][8] ^ Rkey[i - 1][12];
+	Rkey[i][13] = Rkey[i][9] ^ Rkey[i - 1][13];
+	Rkey[i][14] = Rkey[i][10] ^ Rkey[i - 1][14];
+	Rkey[i][15] = Rkey[i][11] ^ Rkey[i - 1][15];
+
+    }
+}
       
