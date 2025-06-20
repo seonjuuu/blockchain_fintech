@@ -118,4 +118,144 @@ void AES_enc(uint8_t *ct, uint8_t *pt)
     {
         ct[i] = pt[i] ^ Rkey[0][i];  // key[i] -> Rkey[0][i] , key는 전역변수가 아니므로 mempy를 통해 Rkey[0]에 마스터키를 저장해놓은거 이용
     }
+
+    // 1Round ~ Last round-1
+    for(int nrnd=0; nrnd < Nr-1; nrnd++)
+    {
+        //subbyte
+        for(int j=0; j<Nb; j++)
+        {
+            ct[j] = sbox[ct[j]];
+        }
+
+        //shiftrow
+
+        //byte-to-word
+        // w[0] = ct[0] ct[4] ct[8] ct[12]
+        for(int j=0; j<Nw; j++)
+        {
+            w[j] = (ct[j] << 24) ^ (ct[4+j]<<16) ^ (ct[8+j]<<8) ^ (ct[12+j]);
+        }
+        for(int j=0; j<Nw; j++)
+        {
+            printf("w[%d]:%x \n", j, w[j]);
+        }
+
+        //rotate
+		w[1] = (w[1] << 8) ^ ((w[1] & 0xff000000) >> 24);
+		w[2] = (w[2] << 16) ^ ((w[2] & 0xffff0000) >> 16);
+		w[3] = (w[3] << 24) ^ ((w[3] & 0xffffff00) >> 8);
+
+        //32bit를 다시 8bit로
+		for (int j = 0; j < Nw; j++)
+		{
+			ct[j] = ((w[j]&0xff000000) >> 24) & 0xff;               
+			ct[4+j] = ((w[j] & 0x00ff0000) >> 16) & 0xff;
+			ct[8+j] = ((w[j] & 0x0000ff00) >> 8) & 0xff;
+			ct[12+j] = ((w[j] & 0x000000ff)) & 0xff;
+		}
+
+        //mixcolum
+        // 1st colum
+        //ct[0], ct[1], ct[2], ct[3]
+        //ct[0]*02(=x)
+		t0 = (((ct[0] >> 7) & 1)*0x1b)^(ct[0] << 1); 
+		//ct[1]*03(=x+1)
+		t1 = (((ct[1] >> 7) & 1)*0x1b) ^ (ct[1] << 1) ^ ct[1];         
+		tmp1 = t0 ^ t1 ^ ct[2] ^ ct[3]; //new ct[0]
+
+		t2 = (((ct[1] >> 7) & 1) * 0x1b) ^ (ct[1] << 1);
+		t3 = (((ct[2] >> 7) & 1) * 0x1b) ^ (ct[2] << 1) ^ ct[2];
+		tmp2 = ct[0] ^ t2 ^ t3 ^ ct[3]; 
+
+		t4 = (((ct[2] >> 7) & 1) * 0x1b) ^ (ct[2] << 1);
+		t5 = (((ct[3] >> 7) & 1) * 0x1b) ^ (ct[3] << 1) ^ ct[3];
+		tmp3 = ct[0] ^ ct[1] ^ t4 ^ t5;
+
+		t6 = (((ct[0] >> 7) & 1) * 0x1b) ^ (ct[0] << 1) ^ ct[0];
+		t7 = (((ct[3] >> 7) & 1) * 0x1b) ^ (ct[3] << 1);
+		tmp4 = t6 ^ ct[1] ^ ct[2] ^ t7;
+
+        ct[0] = tmp1;
+        ct[1] = tmp2;
+        ct[2] = tmp3;
+        ct[3] = tmp4;
+
+		//2nd cloumn
+		// 0->4, 1->5, 2->6, 3->7        
+		t0 = (((ct[4] >> 7) & 1) * 0x1b) ^ (ct[4] << 1);
+		t1 = (((ct[5] >> 7) & 1) * 0x1b) ^ (ct[5] << 1) ^ ct[5];         
+		tmp1 = t0 ^ t1 ^ ct[6] ^ ct[7]; //new ct[4]
+
+		t2 = (((ct[5] >> 7) & 1) * 0x1b) ^ (ct[5] << 1);
+		t3 = (((ct[6] >> 7) & 1) * 0x1b) ^ (ct[6] << 1) ^ ct[6];
+		tmp2 = ct[4] ^ t2 ^ t3 ^ ct[7];
+
+		t4 = (((ct[6] >> 7) & 1) * 0x1b) ^ (ct[6] << 1);
+		t5 = (((ct[7] >> 7) & 1) * 0x1b) ^ (ct[7] << 1) ^ ct[7];
+		tmp3 = ct[4] ^ ct[5] ^ t4 ^ t5;
+
+		t6 = (((ct[4] >> 7) & 1) * 0x1b) ^ (ct[4] << 1) ^ ct[4];
+		t7 = (((ct[7] >> 7) & 1) * 0x1b) ^ (ct[7] << 1);
+		tmp4 = t6 ^ ct[5] ^ ct[6] ^ t7;
+
+		ct[4] = tmp1;
+		ct[5] = tmp2;
+		ct[6] = tmp3;
+		ct[7] = tmp4;
+
+		// 3colum
+		t0 = (((ct[8] >> 7) & 1) * 0x1b) ^ (ct[8] << 1);
+		t1 = (((ct[9] >> 7) & 1) * 0x1b) ^ (ct[9] << 1) ^ ct[9];
+		tmp1 = t0 ^ t1 ^ ct[10] ^ ct[11]; //new ct[8]
+
+		t2 = (((ct[9] >> 7) & 1) * 0x1b) ^ (ct[9] << 1);
+		t3 = (((ct[10] >> 7) & 1) * 0x1b) ^ (ct[10] << 1) ^ ct[10];
+		tmp2 = ct[8] ^ t2 ^ t3 ^ ct[11];
+
+		t4 = (((ct[10] >> 7) & 1) * 0x1b) ^ (ct[10] << 1);
+		t5 = (((ct[11] >> 7) & 1) * 0x1b) ^ (ct[11] << 1) ^ ct[11];
+		tmp3 = ct[8] ^ ct[9] ^ t4 ^ t5;
+
+		t6 = (((ct[8] >> 7) & 1) * 0x1b) ^ (ct[8] << 1) ^ ct[8];
+		t7 = (((ct[11] >> 7) & 1) * 0x1b) ^ (ct[11] << 1);
+		tmp4 = t6 ^ ct[9] ^ ct[10] ^ t7;
+
+		ct[8] = tmp1;
+		ct[9] = tmp2;
+		ct[10] = tmp3;
+		ct[11] = tmp4;
+
+		// 4colum
+		t0 = (((ct[12] >> 7) & 1) * 0x1b) ^ (ct[12] << 1);
+		t1 = (((ct[13] >> 7) & 1) * 0x1b) ^ (ct[13] << 1) ^ ct[13];         
+		tmp1 = t0 ^ t1 ^ ct[14] ^ ct[15]; //new ct[12]
+
+		t2 = (((ct[13] >> 7) & 1) * 0x1b) ^ (ct[13] << 1);
+		t3 = (((ct[14] >> 7) & 1) * 0x1b) ^ (ct[14] << 1) ^ ct[14];
+		tmp2 = ct[12] ^ t2 ^ t3 ^ ct[15];
+
+		t4 = (((ct[14] >> 7) & 1) * 0x1b) ^ (ct[14] << 1);
+		t5 = (((ct[15] >> 7) & 1) * 0x1b) ^ (ct[15] << 1) ^ ct[15];
+		tmp3 = ct[12] ^ ct[13] ^ t4 ^ t5;
+
+		t6 = (((ct[12] >> 7) & 1) * 0x1b) ^ (ct[12] << 1) ^ ct[12];
+		t7 = (((ct[15] >> 7) & 1) * 0x1b) ^ (ct[15] << 1);
+		tmp4 = t6 ^ ct[13] ^ ct[14] ^ t7;
+
+		ct[12] = tmp1;
+		ct[13] = tmp2;
+		ct[14] = tmp3;
+		ct[15] = tmp4;
+
+		printf("mix colum:");
+		PrintValue(ct);        
+
+		//addroundkey
+		for (int i = 0; i < Nb; i++)
+		{
+			ct[i] = ct[i] ^ Rkey[nrnd + 1][i];
+		}
+
+    } // Nr-1
 }
