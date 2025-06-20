@@ -84,4 +84,16 @@ void RoundkeyGen(uint8_t *key)
 
     }
 }
-      
+
+void PrintRKey()
+{
+    for(int i=1; i<Nr+1; i++)
+    {
+        printf("Round %d key :: ", i);
+        for(int j=0; j < Nb; j++)
+        {
+            printf("%02x ",Rkey[i][j]);
+        }
+        printf("\n");
+    }
+}
