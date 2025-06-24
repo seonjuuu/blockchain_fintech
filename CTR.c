@@ -98,3 +98,8 @@ void RoundkeyGen(uint8_t *key)
     }
 
 }
+
+void PrintRKey()
+{
+	
+}
