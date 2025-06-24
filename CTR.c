@@ -13,3 +13,11 @@ uint8_t Rkey[11][16];
 #define Nb 16  
 #define Nw 4   
 #endif
+
+//CTR 구조체
+typedef struct _AES_ALG_INFO {
+	uint8_t Buffer[Nb];
+	uint32_t BufLen;
+	uint8_t ChainVar[Nb];
+}_AES_ALG_INFO;
+typedef _AES_ALG_INFO AES_ALG_INFO[1];
