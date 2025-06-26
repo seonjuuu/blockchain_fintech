@@ -387,3 +387,22 @@ void byte_xor(uint8_t* ct, uint8_t* pt)
 		ct[i] ^= pt[i];
 	}
 }
+
+void aes_ctr_update(AES_ALG_INFO ctx, uint8_t* ct, uint32_t* ctLen, uint8_t* pt, uint32_t ptLen)
+{
+	ctx->BufLen = ptLen; //bytelen
+	while (ctx->BufLen >= Nb)
+	{
+		AES_enc(ct, ctx->ChainVar);
+		aes_ctr_inc(ctx->ChainVar);
+
+		*ctLen += Nb;
+		ctx->BufLen -= Nb;
+		//ct = ct^pt
+		byte_xor(ct, pt);
+		pt += Nb;          //시작지점 증가
+		ct += Nb;
+
+	}
+	memcpy(ctx->Buffer, pt, ctx->BufLen);
+}
