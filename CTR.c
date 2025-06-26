@@ -379,3 +379,11 @@ void aes_ctr_inc(uint8_t* counter)
 	counter[15] = ((w & 0x000000ff) >> 24) & 0xff;
 
 }
+
+void byte_xor(uint8_t* ct, uint8_t* pt)
+{
+	for (int i = 0; i < Nb; i++)
+	{
+		ct[i] ^= pt[i];
+	}
+}
