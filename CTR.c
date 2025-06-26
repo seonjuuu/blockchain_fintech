@@ -406,3 +406,17 @@ void aes_ctr_update(AES_ALG_INFO ctx, uint8_t* ct, uint32_t* ctLen, uint8_t* pt,
 	}
 	memcpy(ctx->Buffer, pt, ctx->BufLen);
 }
+
+void aes_ctr_final(AES_ALG_INFO ctx, uint8_t* ct, uint32_t *ctLen)
+{
+	int len = *ctLen;
+	if (ctx->BufLen != 0) 
+	{
+		AES_enc(ct, ctx->ChainVar);
+		for (int i = 0; i < ctx->BufLen; i++)  
+		{
+			ct[i + len] ^= ctx->Buffer[i];
+		}
+	}
+	*ctLen = *ctLen + ctx->BufLen;
+}
