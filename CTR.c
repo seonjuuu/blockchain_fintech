@@ -326,3 +326,56 @@ void aes_ctr_init(AES_ALG_INFO ctx, uint8_t *Nonce)
 	memcpy(ctx->ChainVar, Nonce, sizeof(uint8_t) * Nb);
 	ctx->BufLen = 0;
 }
+
+//counter 32bit
+void aes_ctr_inc(uint8_t* counter)
+{
+	uint8_t w = 0;
+
+	w = (counter[0] << 24) ^ (counter[1] << 16) ^ (counter[2] << 8) ^ (counter[3]);
+	w++;                    
+	w = w & 0xffffffff;
+
+	//w++ 증가시킨값을 다시 counter에 담아줘여함
+	counter[0] = ((w& 0xff000000) >> 24) & 0xff;
+	counter[1] = ((w & 0x00ff0000) >> 24) & 0xff;
+	counter[2] = ((w & 0x0000ff00) >> 24) & 0xff;
+	counter[3] = ((w & 0x000000ff) >> 24) & 0xff;
+
+	if (w) //w!=0  //w=0이면 종료되지않고 밑의 과정을 수행
+		return;
+
+	w = (counter[4] << 24) ^ (counter[5] << 16) ^ (counter[6] << 8) ^ (counter[7]);
+	w++;
+	w = w & 0xffffffff;
+
+	counter[4] = ((w & 0xff000000) >> 24) & 0xff;
+	counter[5] = ((w & 0x00ff0000) >> 24) & 0xff;
+	counter[6] = ((w & 0x0000ff00) >> 24) & 0xff;
+	counter[7] = ((w & 0x000000ff) >> 24) & 0xff;
+
+	if (w) //w!=0
+		return;
+
+	w = (counter[8] << 24) ^ (counter[9] << 16) ^ (counter[10] << 8) ^ (counter[11]);
+	w++;
+	w = w & 0xffffffff;
+
+	counter[8] = ((w & 0xff000000) >> 24) & 0xff;
+	counter[9] = ((w & 0x00ff0000) >> 24) & 0xff;
+	counter[10] = ((w & 0x0000ff00) >> 24) & 0xff;
+	counter[11] = ((w & 0x000000ff) >> 24) & 0xff;
+
+	if (w) //w!=0
+		return;
+
+	w = (counter[12] << 24) ^ (counter[13] << 16) ^ (counter[14] << 8) ^ (counter[15]);
+	w++;
+	w = w & 0xffffffff;
+
+	counter[12] = ((w & 0xff000000) >> 24) & 0xff;
+	counter[13] = ((w & 0x00ff0000) >> 24) & 0xff;
+	counter[14] = ((w & 0x0000ff00) >> 24) & 0xff;
+	counter[15] = ((w & 0x000000ff) >> 24) & 0xff;
+
+}
