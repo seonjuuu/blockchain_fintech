@@ -420,3 +420,38 @@ void aes_ctr_final(AES_ALG_INFO ctx, uint8_t* ct, uint32_t *ctLen)
 	}
 	*ctLen = *ctLen + ctx->BufLen;
 }
+
+void main()
+{
+    uint8_t Key[16] = { 0x2b, 0x7e, 0x15, 0x16, 0x28, 0xae, 0xd2, 0xa6, 0xab, 0xf7, 0x15, 0x88, 0x09, 0xcf, 0x4f, 0x3c }; //마스터키이자 0round key
+    uint8_t  pt[16] = { 0x32, 0x43, 0xf6, 0xa8, 0x88, 0x5a, 0x30, 0x8d, 0x31, 0x31, 0x98, 0xa2, 0xe0, 0x37, 0x07, 0x34 };
+	unsigned char ct[16] = { 0, };
+    uint32_t w[4] = { 0, };
+    uint8_t t0, t1, t2, t3, t4, t5, t6, t7, tmp1, tmp2, tmp3, tmp4;
+
+	memcpy(Rkey[0], Key, sizeof(uint8_t) * 16);
+
+	RoundkeyGen(Key);
+	AES_enc(ct, pt);
+
+	printf("Ciphertext: ");
+	PrintValue(ct);
+
+	
+	AES_ALG_INFO ctx;
+	uint8_t Nonce[Nb] = { 0, };
+	uint8_t ctr_ct[Nb] = { 0, };
+	uint8_t ctr_pt[Nb] = {0,};
+	uint32_t ctLen = 0;
+	uint32_t ptLen = 16;
+
+	aes_ctr_init(ctx, Nonce);
+	aes_ctr_update(ctx, ctr_ct, &ctLen, ctr_pt, ptLen);
+	aes_ctr_final(ctx, ctr_ct, &ctLen);
+
+	printf("CT ciphertext: ");
+	PrintValue(ctr_ct);
+
+	printf("ctr ciphertextlen : %d \n", ctLen);
+
+}
