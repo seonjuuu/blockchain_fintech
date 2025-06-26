@@ -111,3 +111,5 @@ void PrintRKey()
         printf("\n");
     }
 }
+
+void PrintValue(uint8_t* ct)
