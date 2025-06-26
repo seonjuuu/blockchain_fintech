@@ -318,3 +318,11 @@ void AES_enc(uint8_t *ct, uint8_t *pt)
 	printf("cipertext :");
 	PrintValue(ct);
 }
+
+//CTR 초기화
+void aes_ctr_init(AES_ALG_INFO ctx, uint8_t *Nonce)
+{
+	memset(ctx->Buffer, 0, sizeof(uint8_t) * Nb);
+	memcpy(ctx->ChainVar, Nonce, sizeof(uint8_t) * Nb);
+	ctx->BufLen = 0;
+}
