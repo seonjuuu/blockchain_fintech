@@ -70,3 +70,43 @@ def bin_extgcd(x,y):
 
 
     return a,b,(g*v)
+
+# x^-1 mod q = xinv
+def mod_inv(x,q):
+    xinv,_,_ = bin_extgcd(x,q)  # '_'는 사용되지 않는 변수
+    return (xinv)
+
+print(mod_inv(3,7))
+            
+
+#R=P+Q
+def pt_add(px,py,qx,qy):
+    t0=(py-qy)
+    t1=(px-qx)
+    t1inv=mod_inv(t1,p) #(t1^-1)mod p
+    
+    t0=(t0*t1inv)%p  #lamda
+    
+    rx=(t0**2-px-qx)%p
+    ry=(t0*(px-rx)-py)%p
+    return rx, ry
+
+#R=2P
+#lamda = (t0/t1)modp = (t0*t^-1)modp
+
+def pt_dbl(px,py):
+    #3px^2(A생략)
+    t0=px**2 #px^2
+    t1=t0+t0 #2px^2
+    t1=(t1+t0)%p #3px^2
+
+    t0=(py+py)%p  #2py
+    t0inv = mod_inv(t0,p)
+    #chk : t0*t0inv == 1
+    print("chk: ", (t0*t0inv)%p)
+    t0 =(t1*t0inv)%p
+    
+    rx=(t0**2-px-px)%p
+    ry=(t0*(px-rx)-py)%p
+    
+    return rx, ry
