@@ -264,3 +264,11 @@ def ecdsa_sigver(msg,r,s,Qx,Qy):
             ret = 0
         
         return ret
+    
+# 키 생성
+d, Qx, Qy = ecdsa_keygen()
+# 서명생성
+r,s = ecdsa_siggen("abc",d)
+# 서명검증
+ret = ecdsa_sigver("abc", r, s, Qx,Qy)
+print("verification:",ret)
