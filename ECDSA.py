@@ -122,3 +122,19 @@ def pt_dbl_prdj(x,y,z):
     rz = rz%p
     
     return rx, ry, rz
+
+def pt_add_proj(X,Y,Z, x,y,z):
+    
+    oX = (Z*x - X*z)*(-((Z*x)**3 - X*((Z*x)**2)*z - (Z**3)*(y**2)*z - (X**2)*Z*x*(z**2) + 2*Y*(Z**2)*y*(z**2) + (X*z)**3 - (Y**2)*Z*(z**3)))
+
+    oY = ((Z**4)*(x**3)*y - 2*Y*(Z**3)*(x**3)*z - (Z**4)*(y**3)*z + 3*X*Y*(Z**2)*(x**2)*(z**2) - 3*(X**2)*(Z**2)*x*y*(z**2) + 3*Y*(Z**3)*(y**2)*(z**2) + 2*(X**3)*Z*y*(z**3) - 3*(Y**2)*(Z**2)*y*(z**3) - (X**3)*Y*(z**4) + (Y**3)*Z*(z**4))
+
+    oZ = ((Z*x - X*z)**3*Z*z)
+
+    oX=oX%p
+
+    oY=oY%p
+
+    oZ=oZ%p
+
+    return oX, oY, oZ
