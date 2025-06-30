@@ -232,3 +232,35 @@ def ecdsa_siggen(msg,d):
 
     
 r, s = ecdsa_siggen("abc",d)   #메세지:'abc' , 개인키:d => 서명값 : (r,s)
+
+
+def ecdsa_sigver(msg,r,s,Qx,Qy):
+    ret = 0
+    #  r과 s 중 하나라도 주어진 범위에 속하지 않으면 ret 값을 0으로 설정하고 반환(둘다 범위안에 속한다면 return ret=0)
+    if not(1<=r<=n-1 or 1<=s<=n-1):
+        ret =0 
+        return ret
+    else:
+        #step 2
+        encode_msg=msg.encode()
+        msgdigest = hashlib.sha256(encode_msg).hexdigest()
+        e=int(msgdigest,16)
+        z=e%p
+        #step 3
+        sinv = mod_inv(s,n)
+        u1 = (z*sinv)%n
+        u2 = (r*sinv)%n
+        #step 4
+        u1x, u1y, u1z = kmul(u1,gx,gy,1)        
+        u2x, u2y, u2z = kmul(u2,Qx,Qy,1)
+        X, Y, Z = pt_add_proj(u1x, u1y, u1z, u2x, u2y, u2z)
+        zinv = mod_inv(Z,p)
+        x1 = (X*zinv)%p
+        
+        chk = x1%n
+        if chk == r:
+            ret = 1
+        else:
+            ret = 0
+        
+        return ret
