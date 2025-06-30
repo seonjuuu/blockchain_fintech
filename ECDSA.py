@@ -138,3 +138,21 @@ def pt_add_proj(X,Y,Z, x,y,z):
     oZ=oZ%p
 
     return oX, oY, oZ
+
+# 점p = (X,Y,Z)
+def kmul(k, X, Y, Z):
+    tx = X
+    ty = Y
+    tz = Z
+    kbit = k.bit_length()
+    i = 1
+    i = i<<(kbit-2)
+    while(i != 0):
+        chk = (k&i)
+        tx, ty, tz = pt_dbl_prdj(tx, ty, tz) # 2배
+        if(chk): #chk != 0, 현재 비트는 1
+            tx, ty, tz = pt_add_proj(tx, ty, tz, X, Y, Z) # 1이면 점p 더하기
+            #print("bit : 1")
+        i = i >> 1  # 오른쪽으로 이동
+    
+    return tx, ty, tz
