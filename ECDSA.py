@@ -198,3 +198,37 @@ def ecdsa_keygen() :
     Qy=(Y*zinv)%p
     
     return d, Qx, Qy
+
+# 키 생성
+d, Qx, Qy = ecdsa_keygen()
+
+def ecdsa_siggen(msg,d):
+    encode_msg=msg.encode()
+    msgdigest = hashlib.sha256(encode_msg).hexdigest()
+    print(msgdigest)
+    print(type(msgdigest))
+    e=int(msgdigest,16) # msgdigest를 16진수로 표현된 문자열을 10진수로 변환하여 e에 할당
+    e=e%p
+    
+    flag=0
+    while flag==0:        
+        k = random.randrange(1,n)
+        X, Y, Z = kmul(k, gx, gy, 1) #[k]G (G의 위수 = n => [n]G =0)
+        zinv = mod_inv(Z,p) 
+        x1 = (X*zinv)%p
+        y1 = (Y*zinv)%p
+        
+        r = x1%n
+        kinv = mod_inv(k,n)
+        s = kinv*(e+r*d)%n
+        if r==0: 
+            flag=0
+        elif s==0:
+            flag =0
+        else:
+            flag =1
+    
+    return r, s
+
+    
+r, s = ecdsa_siggen("abc",d)   #메세지:'abc' , 개인키:d => 서명값 : (r,s)
