@@ -156,3 +156,45 @@ def kmul(k, X, Y, Z):
         i = i >> 1  # 오른쪽으로 이동
     
     return tx, ty, tz
+
+# check(rx와 chk가 같은지)
+rx,ry = pt_dbl(gx,gy)
+X,Y,Z = pt_dbl_prdj(gx,gy,1)
+zinv = mod_inv(Z,p)
+chk = (X*zinv)%p
+
+print("rx:",rx)
+print("proj :",chk)
+
+#[23]p kmul과 같은지 비교하기위하여
+rx, ry, rz = pt_dbl_prdj(gx, gy, 1) #2p
+rx, ry, rz = pt_dbl_prdj(rx, ry, rz) #4p
+rx, ry, rz = pt_add_proj(rx, ry, rz, gx, gy, 1) #5p
+rx, ry, rz = pt_dbl_prdj(rx, ry, rz) #10p
+rx, ry, rz = pt_add_proj(rx, ry, rz, gx, gy, 1) #11p
+rx, ry, rz = pt_dbl_prdj(rx, ry, rz) #22p
+rx, ry, rz = pt_add_proj(rx, ry, rz, gx, gy, 1) #23p
+
+zinv = mod_inv(rz,p)
+chk = (rx*zinv)%p
+print("[23]P x :", chk)
+
+#kmul(23,gx,gy,1)
+X,Y,Z = kmul(23,gx,gy,1)
+zinv = mod_inv(Z,p)
+chk = (X*zinv)%p
+print("[23]P kmul:",chk)
+
+
+### ECDSA ### 
+def ecdsa_keygen() :
+    # 개인키 선택
+    d = random.randrange(1,n)
+    # 공개키 연산 Q = [d]G
+    X, Y, Z = kmul(d, gx, gy, 1)
+    zinv = mod_inv(Z,p)
+    
+    Qx=(X*zinv)%p
+    Qy=(Y*zinv)%p
+    
+    return d, Qx, Qy
