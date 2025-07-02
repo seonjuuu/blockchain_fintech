@@ -49,3 +49,19 @@ const uint32_t SHA256_K[64] = { 0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 
 
 
 uint32_t ChainVar[8] = { 0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19 };  //초기값
+
+//초기화
+void sha256_init(SHA256_CTX ctx)
+{
+	ctx->datalen = 0;
+	ctx->bitlen = 0;
+	ctx->ChainVar[0] = 0x6a09e667;
+	ctx->ChainVar[1] = 0xbb67ae85;
+	ctx->ChainVar[2] = 0x3c6ef372;
+	ctx->ChainVar[3] = 0xa54ff53a;
+	ctx->ChainVar[4] = 0x510e527f;
+	ctx->ChainVar[5] = 0x9b05688c;
+	ctx->ChainVar[6] = 0x1f83d9ab;
+	ctx->ChainVar[7] = 0x5be0cd19;
+
+}
