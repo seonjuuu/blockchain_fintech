@@ -197,3 +197,37 @@ void SHA256(uint8_t* Digest, uint8_t* Message, uint32_t MsgLen)
 	sha256_update(ctx, Message, MsgLen);
 	sha256_final(Digest, ctx);
 }
+
+//keylen -> bytelen
+void hmac_sha256_init(HMAC_ALG_INFO hmacctx, uint8_t *key, uint32_t keylen)
+{
+    uint8_t ipad[SHA256_BLOCKLEN];
+    if(keylen <= SHA256_BLOCKLEN)
+    {
+        memcpy(hmacctx->Key, key, sizeof(uint8_t)*keylen);
+        for(int i=0; i<SHA256_BLOCKLEN-keylen; i++) //키가 정확히 64byte면 SHA256_BLOCKLEN-keylen이 0이 되어 for문을 돌지않음
+        {
+            hmacctx->Key[i+keylen]=0; // 0패딩
+
+        }
+
+    }
+    else //keylen > 64
+    {
+        sha256_init(hmacctx->ctx);
+        sha256_update(hmacctx->ctx, key, keylen);
+        sha256_final(hmacctx->Key, hmacctx->ctx); //압축 -> 32byte 저장
+        for(int i=0; i<SHA256_BLOCKLEN-SHA256_DIGESTLEN; i++)
+        {
+            hmacctx->Key[i+SHA256_DIGESTLEN]=0;
+        }
+
+    }
+    for(int i=0; i<SHA256_BLOCKLEN; i++)
+    {
+        ipad[i]=hmacctx->Key[i]^0x36;
+    }
+    //H(key^ipad)
+    sha256_init(hmacctx->ctx);
+    sha256_update(hmacctx->ctx, hmacctx->Key, SHA256_BLOCKLEN);
+}
