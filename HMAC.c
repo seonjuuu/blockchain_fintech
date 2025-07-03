@@ -231,3 +231,9 @@ void hmac_sha256_init(HMAC_ALG_INFO hmacctx, uint8_t *key, uint32_t keylen)
     sha256_init(hmacctx->ctx);
     sha256_update(hmacctx->ctx, hmacctx->Key, SHA256_BLOCKLEN);
 }
+
+void hamc_sha256_update(HMAC_ALG_INFO hmacctx, uint8_t *msg, uint32_t msglen)
+{
+    sha256_update(hmacctx->ctx, msg, msglen);
+    sha256_final(hmacctx->hmac_digest, hmacctx->ctx);
+}
