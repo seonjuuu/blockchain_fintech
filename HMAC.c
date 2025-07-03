@@ -237,3 +237,21 @@ void hamc_sha256_update(HMAC_ALG_INFO hmacctx, uint8_t *msg, uint32_t msglen)
     sha256_update(hmacctx->ctx, msg, msglen);
     sha256_final(hmacctx->hmac_digest, hmacctx->ctx);
 }
+
+void hmac_sha256_final(uint8_t *tag, HMAC_ALG_INFO hmacctx, uint32_t taglen)
+{
+    uint8_t opad[SHA256_BLOCKLEN];
+    uint8_t tmp[SHA256_DIGESTLEN];
+
+    for(int i=0; i<SHA256_BLOCKLEN; i++)
+    {
+        opad[i]=hmacctx->Key[i]^0x5c;
+    }
+    sha256_init(hmacctx->ctx);
+    sha256_update(hmacctx->ctx, opad, SHA256_BLOCKLEN);
+    sha256_update(hmacctx->ctx, hmacctx->hmac_digest, SHA256_BLOCKLEN); 
+    sha256_final(tmp,hmacctx->ctx); //step9
+
+    memcpy(tag, tmp, sizeof(uint8_t)*taglen);
+    
+}
