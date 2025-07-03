@@ -123,3 +123,27 @@ void sha256_transform(SHA256_CTX ctx, const uint8_t* mgs)
 	}
 }
 
+// memcpy 사용법
+// memcpy (결과, 복사하고 싶은것, 길이)
+// Message를 ctx->data에 복사  => memcy(ctc->data, Message, 64) = memcy(ctx->data, Message, SHA256_BLOCKLEN)
+
+// MegLen => byte 단위 >= 64
+void sha256_update(SHA256_CTX ctx, uint8_t* Message, uint32_t MsgLen)
+{
+	ctx->datalen = MsgLen;
+	while (ctx->datalen >= SHA256_BLOCKLEN)
+	{
+		//ctx->data에 meg 복사
+		memcpy(ctx->data, Message, SHA256_BLOCKLEN);        //ctc->data에 Message를 64byte만큼 복사, 512bit를 끊는것
+		//sha256 tranform 
+		sha256_transform(ctx, ctx->data);
+
+		Message += SHA256_BLOCKLEN;                       //while문을 새롭게 한번 더 돌때 복사하는 Message의 시작부분 증가해야함, 시작포인터 증가(64byte 증가시킨부분부터 복사해서 transform)
+		ctx->datalen -= SHA256_BLOCKLEN;                  //ctx->datalen에 남은 메시지가 저장됨
+		ctx->bitlen += 512;
+
+	}
+	// 남은 메시지 블록 복사 => final에서 패딩 
+	memcpy(ctx->data, Message, ctx->datalen);
+
+}
