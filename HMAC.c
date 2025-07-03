@@ -65,3 +65,61 @@ void sha256_init(SHA256_CTX ctx)
 	ctx->ChainVar[7] = 0x5be0cd19;
 
 }
+
+// 전처리과정 함수
+void sha256_transform(SHA256_CTX ctx, const uint8_t* mgs)
+{
+    uint32_t W[SHA256_BLOCKLEN] = { 0, }; //32bit 16개(t가 0~15)와 연산(16~63) => 총 64개(SHA256_BLOCKLEN)
+    uint32_t a, b, c, d, e, f, g, h, T1, T2;
+
+    //기본 블록 해시
+	for (int i = 0; i < 16; i++)
+	{
+		W[i] = (mgs[4 * i] << 24) ^ (mgs[4 * i + 1] << 16) ^ (mgs[4 * i + 2] << 8) ^ (mgs[4 * i + 3]);
+	}
+	for (int i = 16; i < 64; i++)
+	{
+		W[i] = sig1(W[i - 2]) + W[i - 7] + sig0(W[i - 15]) + W[i - 16];
+	}
+
+	a = ctx->ChainVar[0];
+	b = ctx->ChainVar[1];
+	c = ctx->ChainVar[2];
+	d = ctx->ChainVar[3];
+	e = ctx->ChainVar[4];
+	f = ctx->ChainVar[5];
+	g = ctx->ChainVar[6];
+	h = ctx->ChainVar[7];
+
+	// SHA256-one block
+	for (int t = 0; t < 64; t++)
+	{
+		T1 = h + S1(e) + CH(e, f, g) + SHA256_K[t] + W[t];
+		T2 = S0(a) + Maj(a, b, c);
+		h = g;
+		g = f;
+		f = e;
+		e = d + T1;
+		d = c;
+		c = b;
+		b = a;
+		a = T1 + T2;
+
+	}
+
+	ctx->ChainVar[0] = a + ctx->ChainVar[0];
+	ctx->ChainVar[1] = b + ctx->ChainVar[1];
+	ctx->ChainVar[2] = c + ctx->ChainVar[2];
+	ctx->ChainVar[3] = d + ctx->ChainVar[3];
+	ctx->ChainVar[4] = e + ctx->ChainVar[4];
+	ctx->ChainVar[5] = f + ctx->ChainVar[5];
+	ctx->ChainVar[6] = g + ctx->ChainVar[6];
+	ctx->ChainVar[7] = h + ctx->ChainVar[7];
+
+	//Hash value
+	for (int i = 0; i < 8; i++)
+	{
+		printf("transform_Ch[%d] : %x \n", i,ChainVar[i]);
+	}
+}
+
