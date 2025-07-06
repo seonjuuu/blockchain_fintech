@@ -68,4 +68,20 @@ void main()
 	g = ChainVar[6];
 	h = ChainVar[7];
 
+	// SHA256-one block
+	for (int t = 0; t < 64; t++)
+	{
+		T1 = h + S1(e) + CH(e, f, g) + SHA256_K[t] + W[t];
+		T2 = S0(a) + Maj(a, b, c);
+		h = g;
+		g = f;
+		f = e;
+		e = d + T1;
+		d = c;
+		c = b;
+		b = a;
+		a = T1 + T2;
+
+	}
+
 }
