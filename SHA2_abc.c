@@ -84,4 +84,19 @@ void main()
 
 	}
 
+	ChainVar[0] = a + ChainVar[0];
+	ChainVar[1] = b + ChainVar[1];
+	ChainVar[2] = c + ChainVar[2];
+	ChainVar[3] = d + ChainVar[3];
+	ChainVar[4] = e + ChainVar[4];
+	ChainVar[5] = f + ChainVar[5];
+	ChainVar[6] = g + ChainVar[6];
+	ChainVar[7] = h + ChainVar[7];
+
+	//Hash value
+	for (int i = 0; i < 8; i++)
+	{
+		printf("Ch[%d] : %x \n", i,ChainVar[i]);
+	}
+
 }
