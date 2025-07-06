@@ -49,4 +49,23 @@ void main()
     mpad[3] = 0x80; //1붙이고 뒤는 0으로 패딩 즉, 10000000..
     mpad[63] = msglen; //길이 정보
 
+	//기본 블록 해시
+	for (int i = 0; i < 16; i++)
+	{
+		W[i] = (mpad[4 * i] << 24) ^ (mpad[4 * i + 1] << 16) ^ (mpad[4 * i + 2] << 8) ^ (mpad[4 * i + 3]);
+	}
+	for (int i = 16; i < 64; i++)
+	{
+		W[i] = sig1(W[i - 2]) + W[i - 7] + sig0(W[i - 15]) + W[i - 16];
+	}
+
+	a = ChainVar[0];
+	b = ChainVar[1];
+	c = ChainVar[2];
+	d = ChainVar[3];
+	e = ChainVar[4];
+	f = ChainVar[5];
+	g = ChainVar[6];
+	h = ChainVar[7];
+
 }
