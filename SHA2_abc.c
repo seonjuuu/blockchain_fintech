@@ -43,4 +43,10 @@ void main()
     uint32_t W[SHA256_BLOCKLEN] = { 0, }; //32bit 16개(t가 0~15)와 연산(16~63) => 총 64개(SHA256_BLOCKLEN)
     uint32_t a, b, c, d, e, f, g, h, T1, T2;
 
+	mpad[0] = msg1[0];
+    mpad[1] = msg1[1];
+    mpad[2] = msg1[2];
+    mpad[3] = 0x80; //1붙이고 뒤는 0으로 패딩 즉, 10000000..
+    mpad[63] = msglen; //길이 정보
+
 }
