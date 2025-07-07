@@ -98,4 +98,19 @@ void sha256_transform(SHA256_CTX ctx, const uint8_t* mgs)
 		a = T1 + T2;
 
 	}
+
+	ctx->ChainVar[0] = a + ctx->ChainVar[0];
+	ctx->ChainVar[1] = b + ctx->ChainVar[1];
+	ctx->ChainVar[2] = c + ctx->ChainVar[2];
+	ctx->ChainVar[3] = d + ctx->ChainVar[3];
+	ctx->ChainVar[4] = e + ctx->ChainVar[4];
+	ctx->ChainVar[5] = f + ctx->ChainVar[5];
+	ctx->ChainVar[6] = g + ctx->ChainVar[6];
+	ctx->ChainVar[7] = h + ctx->ChainVar[7];
+
+	//Hash value
+	for (int i = 0; i < 8; i++)
+	{
+		printf("transform_Ch[%d] : %x \n", i,ChainVar[i]);
+	}
 }
