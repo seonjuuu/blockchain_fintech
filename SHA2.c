@@ -139,3 +139,45 @@ void sha256_update(SHA256_CTX ctx, uint8_t* Message, uint32_t MsgLen)
 
 }
 
+void sha256_final(uint8_t* hash, SHA256_CTX ctx)
+{
+	int i = ctx->datalen;
+	if (ctx->datalen <56) 
+	{
+		ctx->data[i++] = 0x80;     //1byte는 0x80
+		while(i<56)
+			ctx->data[i++] = 0x00;
+	}
+	else
+	{
+		ctx->data[i++] = 0x80;    //길이가 56byte가 넘어도 0x80는 무조건 붙여줘야함 !!
+		while (i < 64)
+			ctx->data[i++] = 0x00;
+		sha256_transform(ctx, ctx->data);
+		memset(ctx->data, 0, 56);                         //'ctx->data'배열의 처음 56byte를 0으로 설정(초기화)
+
+	}
+	//길이정보(64bit=8byte)//hash
+	ctx->bitlen += ctx->datalen * 8;                     //bitlen의 길이정보에 나머지 블록 길이의 정보도 저장
+	// 64bit 변수 -> 8bit 8개
+	ctx->data[63] = (ctx->bitlen) & 0xff;                 //0xff=마지막 8bit를 끊어낸다(최하위 8bit는 [63]에 저장)
+	ctx->data[62] = (ctx->bitlen >> 8) & 0xff;
+	ctx->data[61] = (ctx->bitlen >> 16) & 0xff;
+	ctx->data[60] = (ctx->bitlen >> 24) & 0xff;
+	ctx->data[59] = (ctx->bitlen >> 32) & 0xff;
+	ctx->data[58] = (ctx->bitlen >> 40) & 0xff;
+	ctx->data[57] = (ctx->bitlen >> 48) & 0xff;
+	ctx->data[56] = (ctx->bitlen >> 56) & 0xff;
+
+	sha256_transform(ctx, ctx->data);                    //나머지블록의 transform
+
+	//최종 해시값 hash[]//ChainVar[0] = hash[0] hash[1] hash[2] hash[3]
+	for (int i = 0; i < 8; i++)  //hash[0](8bit)~hash[31] : 각각의 hash가 32개 모여서 총 256bit(해시값) 
+	{
+		hash[4 * i] = (ctx->ChainVar[i] >> 24) & 0xff;  
+		hash[4 * i+1] = (ctx->ChainVar[i] >> 16) & 0xff;
+		hash[4 * i+2] = (ctx->ChainVar[i] >> 8) & 0xff;
+		hash[4 * i+3] = (ctx->ChainVar[i]) & 0xff;	
+	}
+}
+
