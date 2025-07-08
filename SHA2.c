@@ -188,3 +188,28 @@ void SHA256(uint8_t* Digest, uint8_t* Message, uint32_t MsgLen)
 	sha256_update(ctx, Message, MsgLen);
 	sha256_final(Digest, ctx);
 }
+void main()
+{
+    uint8_t msg1[] = {"abc"};
+	//uint8_t hash1[SHA256_DIGESTLEN] = { 0xba,0x78,0x16,0xbf,0x8f,0x01,0xcf,0xea,0x41,0x41,0x40,0xde,0x5d,0xae,0x22,0x23,0xb0,0x03,0x61,0xa3,0x96,0x17,0x7a,0x9c,0xb4,0x10,0xff,0x61,0xf2,0x00,0x15,0xad };  //해시 결과값
+
+	//함수 테스트
+	SHA256_CTX ctx;
+	uint32_t mlen = 3;  //byte 단위
+	uint8_t tmp[SHA256_DIGESTLEN];  //SHA256_DIGESTLEN = 32
+	sha256_init(ctx);
+	sha256_update(ctx, msg1, mlen);
+	sha256_final(tmp, ctx);
+	//Hash value
+	SHA256(tmp, msg1, mlen);
+	for (int i = 0; i < 8; i++)
+	{
+		printf("Ch[%d] : %x \n", i, ctx->ChainVar[i]);
+	}
+	for (int i = 0; i < 32; i++)
+	{
+		printf("%02x ", tmp[i]);  //해시값(ChainVar[0]~ChainVar[7] 값들을 순서대로 출력)
+	}
+	printf("\n");
+
+}
