@@ -181,3 +181,10 @@ void sha256_final(uint8_t* hash, SHA256_CTX ctx)
 	}
 }
 
+void SHA256(uint8_t* Digest, uint8_t* Message, uint32_t MsgLen)
+{
+	SHA256_CTX ctx;
+	sha256_init(ctx);
+	sha256_update(ctx, Message, MsgLen);
+	sha256_final(Digest, ctx);
+}
