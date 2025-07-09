@@ -29,3 +29,20 @@ void main()
 
 	printf("out : %02x \n", out);
 }
+
+// 8비트에서 홀수번째 비트와 짝수번째 비트 XOR 하기
+
+void main()
+{
+	unsigned char a = 0xbc;
+	unsigned char t0 = 0, t1 = 0, out = 0;
+
+	t0 = a & 0xaa;     //* _ * _ * _ * _
+	t0 = t0 >> 1;      //_ * _ * _ * _ * (짝수번째와 자리 맞추기)
+	t1 = a & 0x55;     //_ * _ * _ * _ *
+
+	out = t0 ^ t1;
+
+	printf("out : %02x \n", out);
+
+}
