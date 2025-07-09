@@ -13,3 +13,19 @@ void main()
 	printf("rotate shift : %02x \n",a);
 #endif
 }
+
+// rotate shift - 오른쪽
+
+void main()
+{
+	unsigned char a = 0xb3, out = 0;
+	unsigned char t0 = 0, t1 = 0;
+
+	t0 = a & 0x07;   //_ _ _ _ _ * * *
+	t0 = t0 << 5;   //* * * _ _ _ _ _
+	t1 = a >> 3; // _ _ _ * * * * *
+
+	out = t0 ^ t1;
+
+	printf("out : %02x \n", out);
+}
