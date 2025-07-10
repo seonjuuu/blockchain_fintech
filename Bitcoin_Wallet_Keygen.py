@@ -15,6 +15,7 @@ b=7
 
 # 0 : on curve
 # 1 : not on curve 
+# 주어진 (x, y)가 타원 곡선 위의 점인지 확인
 def is_oncurve(x,y):
     t0 = (x**3+a*x+b)%p
     t1 = (y**2)%p
