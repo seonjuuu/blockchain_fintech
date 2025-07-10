@@ -23,8 +23,8 @@ def is_oncurve(x,y):
         return 0
     else:
         return 1
-    
 
+# 이진 확장 유클리드 알고리즘으로 최대공약수와 계수 계산
 def bin_extgcd(x,y):
     tx = x
     ty = y
