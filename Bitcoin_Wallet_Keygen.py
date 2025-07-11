@@ -97,6 +97,7 @@ def pt_add(px,py, qx,qy):
     return rx, ry
 
 #R=2P
+#평면 좌표계에서 점 P의 두 배 연산 (2P)
 def pt_dbl(px, py):
     #3px^2
     t0 = px**2  #px^2
