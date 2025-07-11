@@ -84,6 +84,7 @@ def mod_inv(x,q):
     return xinv
 
 #R=P+Q
+#평면 좌표계에서 두 점 P + Q 연산
 def pt_add(px,py, qx,qy):
     #lambda = t0/t1
     t0 = (py-qy)
