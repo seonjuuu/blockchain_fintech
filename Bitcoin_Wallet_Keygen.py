@@ -197,4 +197,21 @@ def base58encode(n):
     return txt[::-1]
 
 print('base58encode:',base58encode(12548))
+
+def wif(d):
+    dstr = hex(d)   #hex를 이용하여 int형태를 str형태로 바꿈
+    #print(type(dstr))
+    #print(dstr)
+    prefix = "80" + dstr[2:]
+    checksum = binascii.unhexlify(prefix)
+    h = hashlib.sha256(checksum).digest()
+    h = hashlib.sha256(h).digest()
+    h=''.join('{:02x}'.format(y) for y in h)
+    prefix = prefix + h[0:8]
+    prefix = int(prefix,16)
+    
+    
+    return base58encode(prefix)
+
+print(wif(d))
             
