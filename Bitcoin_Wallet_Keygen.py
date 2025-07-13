@@ -176,3 +176,22 @@ def ecdsa_keygen():
     Qy=(Y*zinv)%p
 
     return d, Qx, Qy
+
+
+#시작#
+d, qx, qy = ecdsa_keygen()  #키생성
+print("개인키 d :", d)
+print("공개키 Qx :", qx)
+print("공개키 Qy :", qy)
+
+def base58encode(n):
+    b58="123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+    tmp = n 
+    txt = ""
+    while(tmp>0):
+        idx = tmp%58    
+        txt = txt + b58[idx]
+        tmp = int(tmp/58)
+    #print(txt)    
+    return txt[::-1]
+            
