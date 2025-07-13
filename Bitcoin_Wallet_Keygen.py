@@ -144,7 +144,7 @@ def pt_add_proj(X,Y,Z, x,y,z):
     return oX, oY, oZ
 
 
-# 프로젝티브 좌표계에서 스칼라 곱 [k]P 수행
+#프로젝티브 좌표계에서 스칼라 곱 [k]P 수행
 def kmul(k, X, Y, Z):
     tx = X
     ty = Y
@@ -218,7 +218,7 @@ def wif(d):
 print(wif(d))
 
 
-# 공개키(qx, qy)를 바탕으로 비트코인 주소 생성
+#공개키(qx, qy)를 바탕으로 비트코인 주소 생성
 def waddr(qx,qy):
     Qx = hex(qx)[2:]
     Qy = hex(qy)[2:]
@@ -236,7 +236,7 @@ def waddr(qx,qy):
 print(waddr(qx,qy))
 
 
-# 문자열을 기반으로 ECDSA 키쌍 생성 (고정된 키)
+#문자열을 기반으로 ECDSA 키쌍 생성 (고정된 키)
 def ecc_keystring(w):
     # 개인키 선택
     tmp = [ ord(char) for char in w]
