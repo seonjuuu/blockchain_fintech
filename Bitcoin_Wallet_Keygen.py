@@ -235,6 +235,8 @@ def waddr(qx,qy):
     
 print(waddr(qx,qy))
 
+
+# 문자열을 기반으로 ECDSA 키쌍 생성 (고정된 키)
 def ecc_keystring(w):
     # 개인키 선택
     tmp = [ ord(char) for char in w]
