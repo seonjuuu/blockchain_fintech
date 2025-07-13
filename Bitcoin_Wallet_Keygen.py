@@ -198,6 +198,7 @@ def base58encode(n):
 
 print('base58encode:',base58encode(12548))
 
+#개인키 d를 WIF(Wallet Import Format) 형식으로 변환
 def wif(d):
     dstr = hex(d)   #hex를 이용하여 int형태를 str형태로 바꿈
     #print(type(dstr))
