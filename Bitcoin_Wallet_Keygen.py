@@ -218,6 +218,7 @@ def wif(d):
 print(wif(d))
 
 
+# 공개키(qx, qy)를 바탕으로 비트코인 주소 생성
 def waddr(qx,qy):
     Qx = hex(qx)[2:]
     Qy = hex(qy)[2:]
