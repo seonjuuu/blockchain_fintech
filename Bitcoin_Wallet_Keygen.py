@@ -198,6 +198,7 @@ def base58encode(n):
 
 print('base58encode:',base58encode(12548))
 
+
 #개인키 d를 WIF(Wallet Import Format) 형식으로 변환
 def wif(d):
     dstr = hex(d)   #hex를 이용하여 int형태를 str형태로 바꿈
@@ -215,4 +216,21 @@ def wif(d):
     return base58encode(prefix)
 
 print(wif(d))
+
+
+def waddr(qx,qy):
+    Qx = hex(qx)[2:]
+    Qy = hex(qy)[2:]
+    
+    prefix = '04'+Qx+Qy
+    prefix = binascii.unhexlify(prefix)
+    h = hashlib.sha256(prefix).digest()
+    h = hashlib.sha256(h).digest()
+    h=''.join('{:02x}'.format(y) for y in h)
+    h = int(h,16)
+    
+    return base58encode(h)
+    
+    
+print(waddr(qx,qy))
             
