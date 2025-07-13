@@ -184,6 +184,7 @@ print("개인키 d :", d)
 print("공개키 Qx :", qx)
 print("공개키 Qy :", qy)
 
+#정수 n을 비트코인에서 사용하는 Base58 형식으로 인코딩
 def base58encode(n):
     b58="123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
     tmp = n 
@@ -194,4 +195,6 @@ def base58encode(n):
         tmp = int(tmp/58)
     #print(txt)    
     return txt[::-1]
+
+print('base58encode:',base58encode(12548))
             
