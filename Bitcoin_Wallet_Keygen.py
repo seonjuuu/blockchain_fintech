@@ -234,4 +234,26 @@ def waddr(qx,qy):
     
     
 print(waddr(qx,qy))
+
+def ecc_keystring(w):
+    # 개인키 선택
+    tmp = [ ord(char) for char in w]
+    t = ""
+    for i in tmp:
+        t=t+hex(i)[2:]
+    t = binascii.unhexlify(t)
+    h = hashlib.sha256(t).digest()
+    h = ''.join('{:02x}'.format(y) for y in h)
+    d = int(h,16)
+    d = d%n
+    # 공개키 연산 Q = [d]G
+    X,Y,Z = kmul(d, gx, gy, 1)
+    zinv=mod_inv(Z,p)
+
+    Qx=(X*zinv)%p
+    Qy=(Y*zinv)%p
+
+    return d, Qx, Qy
+    
+print(ecc_keystring("hi"))
             
