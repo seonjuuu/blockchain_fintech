@@ -80,6 +80,7 @@ def bin_extgcd(x,y):
 
 
 # x^-1 mod q
+# x의 모듈로 역원 계산
 def mod_inv(x,q):
     xinv,_ , _ = bin_extgcd(x,q)
     return xinv
