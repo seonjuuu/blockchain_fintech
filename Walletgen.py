@@ -116,3 +116,5 @@ def pt_dbl(px, py):
 
     rx = (t0**2-px-px)%p
     ry = (t0*(px-rx)-py)%p
+
+    return rx, ry
