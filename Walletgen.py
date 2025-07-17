@@ -148,6 +148,7 @@ def pt_add_proj(X,Y,Z, x,y,z):
     return oX, oY, oZ
 
 
+# 프로젝티브 좌표계에서 점 [k]P 스칼라 곱 연산
 def kmul(k, X, Y, Z):
     tx = X
     ty = Y
