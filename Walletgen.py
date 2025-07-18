@@ -182,6 +182,7 @@ def ecdsa_keygen():
     return d, Qx, Qy
 
 
+# 메시지 m과 개인키 d로 ECDSA 서명 (r, s) 생성
 def ecdsa_siggen(m, d):
     emsg = m.encode()
     h = hashlib.sha256(emsg).hexdigest()
