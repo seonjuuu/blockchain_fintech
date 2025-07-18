@@ -236,6 +236,7 @@ print("ECDSA VERIFY:",ecdsa_verify("abc",r,s,qx,qy))
 
 
 # n은 string 형태로
+# 16진수 문자열 n의 길이를 64자로 0-padding하여 맞춤
 def form_length(n):
     tmp=n
     while len(tmp)!=64:
