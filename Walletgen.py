@@ -233,3 +233,14 @@ def ecdsa_verify(m,r,s,qx,qy): #검증
 d, qx, qy = ecdsa_keygen() #키생성
 r,s = ecdsa_siggen("abc",d)
 print("ECDSA VERIFY:",ecdsa_verify("abc",r,s,qx,qy))
+
+
+# n은 string 형태로
+def form_length(n):
+    tmp=n
+    while len(tmp)!=64:
+        tmp = '0'+tmp
+    return tmp
+
+a='345'
+print("result :",form_length(a))
