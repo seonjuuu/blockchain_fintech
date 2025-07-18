@@ -204,3 +204,25 @@ def ecdsa_siggen(m, d):
             else:
                 flag=0
     return r,s
+
+
+def ecdsa_verify(m,r,s,qx,qy): #검증
+    emsg = m.encode()
+    h = hashlib.sha256(emsg).hexdigest()
+    h = int(h,16)
+    sinv = mod_inv(s,n)
+    u1 = (h*sinv)%n
+    u2 = (r*sinv)%n
+    X, Y, Z = kmul(u1, gx, gy, 1)
+    X2,Y2,Z2 = kmul(u2,qx,qy,1)
+    Zinv = mod_inv(Z,p)
+    u1x = (X*Zinv)%p
+    u1y = (Y*Zinv)%p
+    Zinv = mod_inv(Z2,p)
+    u2x = (X2*Zinv)%p
+    u2y = (Y2*Zinv)%p
+    rx, _ = pt_add(u1x,u1y,u2x,u2y)
+    if (r%n) ==(rx%n):
+        return 1
+    else:
+        return 0
