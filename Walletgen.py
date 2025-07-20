@@ -247,3 +247,15 @@ a='345'
 print("result :",form_length(a))
 
 
+
+def base58_to_dec(n):
+    b58="123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+    tmp = n
+    tmp = tmp[::-1]
+    exp =0
+    ret =0
+    for i in tmp:
+        idx = b58.find(i)
+        ret = ret + idx*(58**exp)
+        exp=exp+1
+    return ret
