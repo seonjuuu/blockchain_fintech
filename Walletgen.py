@@ -247,7 +247,7 @@ a='345'
 print("result :",form_length(a))
 
 
-
+# Base58 문자열을 다시 정수로 디코딩
 def base58_to_dec(n):
     b58="123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
     tmp = n
