@@ -256,6 +256,7 @@ def base58encode(n):
         idx = tmp%58
         txt = txt + b58[idx]
         tmp = int(tmp/58)
+    return txt[::-1]
 
 
 # Base58 문자열을 다시 정수로 디코딩
