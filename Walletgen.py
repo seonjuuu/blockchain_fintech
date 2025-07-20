@@ -259,3 +259,7 @@ def base58_to_dec(n):
         ret = ret + idx*(58**exp)
         exp=exp+1
     return ret
+a=12548
+ba = base58encode(a)
+ret = base58_to_dec(ba)
+print("base58 to dec:",ret)
