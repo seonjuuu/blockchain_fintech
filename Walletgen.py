@@ -246,6 +246,8 @@ def form_length(n):
 a='345'
 print("result :",form_length(a))
 
+
+# 정수 n을 Base58 문자열로 인코딩
 def base58encode(n):
     b58="123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
     tmp = n
