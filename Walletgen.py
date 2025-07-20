@@ -277,6 +277,7 @@ ret = base58_to_dec(ba)
 print("base58 to dec:",ret)
 
 
+# 개인키 d를 WIF(Wallet Import Format) 문자열로 변환
 def wif(d):
     dstr = hex(d)   #hex를 이용하여 int형태를 str형태로 바꿈
     #print(type(dstr))
