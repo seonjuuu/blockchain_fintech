@@ -246,6 +246,15 @@ def form_length(n):
 a='345'
 print("result :",form_length(a))
 
+def base58encode(n):
+    b58="123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+    tmp = n
+    txt = ""
+    while tmp>0:
+        idx = tmp%58
+        txt = txt + b58[idx]
+        tmp = int(tmp/58)
+
 
 # Base58 문자열을 다시 정수로 디코딩
 def base58_to_dec(n):
