@@ -303,3 +303,5 @@ def waddr(qx,qy):
     prefix = binascii.unhexlify(prefix)
     h = hashlib.sha256(prefix).digest()
     h = hashlib.sha256(h).digest()
+    h=''.join('{:02x}'.format(y) for y in h)
+    h = int(h,16)
