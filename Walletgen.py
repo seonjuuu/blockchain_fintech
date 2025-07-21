@@ -301,3 +301,5 @@ def waddr(qx,qy):
 
     prefix = '04'+Qx+Qy
     prefix = binascii.unhexlify(prefix)
+    h = hashlib.sha256(prefix).digest()
+    h = hashlib.sha256(h).digest()
