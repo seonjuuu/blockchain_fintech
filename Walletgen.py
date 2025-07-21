@@ -317,3 +317,5 @@ def ecc_keystring(w):
     d=int(h,16)%n
     #d = random.randrange(1,n)
     # 공개키 연산 Q = [d]G
+    X,Y,Z = kmul(d, gx, gy, 1)
+    zinv=mod_inv(Z,p)
