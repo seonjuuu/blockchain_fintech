@@ -305,3 +305,5 @@ def waddr(qx,qy):
     h = hashlib.sha256(h).digest()
     h=''.join('{:02x}'.format(y) for y in h)
     h = int(h,16)
+
+    return base58encode(h)
