@@ -312,4 +312,6 @@ def waddr(qx,qy):
 print(waddr(qx,qy))
 
 def ecc_keystring(w):
-    
+    emsg = w.encode()
+    h=hashlib.sha256(emsg).hexdigest()
+    d=int(h,16)%n
