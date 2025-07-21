@@ -322,3 +322,5 @@ def ecc_keystring(w):
 
     Qx=(X*zinv)%p
     Qy=(Y*zinv)%p
+
+    return d, Qx, Qy
