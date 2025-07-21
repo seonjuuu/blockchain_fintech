@@ -310,3 +310,6 @@ def waddr(qx,qy):
     return base58encode(h)
 
 print(waddr(qx,qy))
+
+def ecc_keystring(w):
+    
