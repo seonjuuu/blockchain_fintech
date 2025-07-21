@@ -319,3 +319,6 @@ def ecc_keystring(w):
     # 공개키 연산 Q = [d]G
     X,Y,Z = kmul(d, gx, gy, 1)
     zinv=mod_inv(Z,p)
+
+    Qx=(X*zinv)%p
+    Qy=(Y*zinv)%p
