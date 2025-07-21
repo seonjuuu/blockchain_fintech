@@ -307,3 +307,5 @@ def waddr(qx,qy):
     h = int(h,16)
 
     return base58encode(h)
+
+print(waddr(qx,qy))
