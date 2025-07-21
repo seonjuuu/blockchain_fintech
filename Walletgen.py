@@ -298,3 +298,6 @@ print(wif(d))
 def waddr(qx,qy):
     Qx = hex(qx)[2:]#0x
     Qy = hex(qy)[2:]
+
+    prefix = '04'+Qx+Qy
+    prefix = binascii.unhexlify(prefix)
