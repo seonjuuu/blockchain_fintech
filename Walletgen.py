@@ -315,3 +315,5 @@ def ecc_keystring(w):
     emsg = w.encode()
     h=hashlib.sha256(emsg).hexdigest()
     d=int(h,16)%n
+    #d = random.randrange(1,n)
+    # 공개키 연산 Q = [d]G
