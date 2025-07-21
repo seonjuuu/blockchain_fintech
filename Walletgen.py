@@ -293,3 +293,7 @@ def wif(d):
     return base58encode(prefix)
 
 print(wif(d))
+
+
+def waddr(qx,qy):
+    
