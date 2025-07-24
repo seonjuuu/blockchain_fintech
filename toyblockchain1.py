@@ -10,3 +10,8 @@ class calc:
         return self.first-self.second
     def mul(self):
         return self.first * self.second
+    def div(self):
+        q=self.first//self.second
+        r=self.first%self.second
+        return q,r
+    
