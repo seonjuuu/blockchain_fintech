@@ -15,3 +15,10 @@ class calc:
         r=self.first%self.second
         return q,r
     
+a=calc(2,3)
+#a.set(2,3)
+print("add:",a.add())
+print("sub:",a.sub())
+print("mul:",a.mul())
+print("div:",a.div())
+    
