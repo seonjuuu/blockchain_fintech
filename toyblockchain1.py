@@ -32,4 +32,11 @@ class block:
         self.prehash = prehash
         self.nonce=0
         self.hash = self.calchash()
+
+    def mineblock(self,difficulty):
+        start=0
+        prefix = self.timestamp+self.data+self.prehash
+        msg = prefix+'0'
+        msg = msg.encode()
+        msg = hashlib.sha256(msg).hexdigest()
     
