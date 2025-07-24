@@ -21,4 +21,15 @@ print("add:",a.add())
 print("sub:",a.sub())
 print("mul:",a.mul())
 print("div:",a.div())
+
+############################ 
+
+import hashlib
+class block:
+    def __init__(self,timestamp,data,prehash):
+        self.timestamp = timestamp
+        self.data = data
+        self.prehash = prehash
+        self.nonce=0
+        self.hash = self.calchash()
     
