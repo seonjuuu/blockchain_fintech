@@ -8,3 +8,5 @@ class calc:
         return self.first+self.second
     def sub(self):
         return self.first-self.second
+    def mul(self):
+        return self.first * self.second
