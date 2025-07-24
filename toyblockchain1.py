@@ -39,4 +39,9 @@ class block:
         msg = prefix+'0'
         msg = msg.encode()
         msg = hashlib.sha256(msg).hexdigest()
+        
+        cmp=''
+        for i in range(0,difficulty):
+            cmp = cmp+'0' #if difficulty=4 -> '0000'
+         
     
