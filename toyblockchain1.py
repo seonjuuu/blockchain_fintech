@@ -43,5 +43,13 @@ class block:
         cmp=''
         for i in range(0,difficulty):
             cmp = cmp+'0' #if difficulty=4 -> '0000'
-         
+        while (msg[:difficulty]!=cmp):
+            start=start+1
+            nstr=hex(start)
+            nstr = nstr[2:]
+            msg = prefix+nstr
+            msg = msg.encode()
+            msg = hashlib.sha256(msg).hexdigest()
+        self.hash = msg
+        self.nonce = start
     
