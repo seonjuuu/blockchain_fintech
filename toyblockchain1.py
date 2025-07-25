@@ -52,4 +52,6 @@ class block:
             msg = hashlib.sha256(msg).hexdigest()
         self.hash = msg
         self.nonce = start
+
+    def calchash(self):
     
