@@ -57,4 +57,6 @@ class block:
         #전체 string이라 가정
         nstr = hex(self.nonce)
         nstr = nstr[2:]
+        msg=self.timestamp+self.data+self.prehash+nstr
+        
     
