@@ -58,5 +58,6 @@ class block:
         nstr = hex(self.nonce)
         nstr = nstr[2:]
         msg=self.timestamp+self.data+self.prehash+nstr
+        msg=msg.encode()
         
     
