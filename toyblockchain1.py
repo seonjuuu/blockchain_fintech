@@ -54,4 +54,6 @@ class block:
         self.nonce = start
 
     def calchash(self):
+        #전체 string이라 가정
+        nstr = hex(self.nonce)
     
