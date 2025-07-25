@@ -61,4 +61,5 @@ class block:
         msg=msg.encode()
         msg=hashlib.sha256(msg).hexdigest()
 
+        return msg
     
