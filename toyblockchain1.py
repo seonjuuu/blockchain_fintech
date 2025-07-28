@@ -66,3 +66,5 @@ class block:
 
         return msg
     
+
+class blockchain:
