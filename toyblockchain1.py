@@ -68,3 +68,9 @@ class block:
     
 
 class blockchain:
+    def __init__(self):
+        self.chain=[]
+        gen_block = block('231111','genesis','0')
+        gen_block.mineblock(4)
+        self.chain.append(gen_block)
+        self.len =1
