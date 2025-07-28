@@ -26,6 +26,7 @@ print("div:",a.div())
 
 import hashlib
 class block:
+    #초기화
     def __init__(self,timestamp,data,prehash):
         self.timestamp = timestamp
         self.data = data
@@ -54,6 +55,7 @@ class block:
         self.hash = msg
         self.nonce = start
 
+    #SHA-256 해시값 계산
     def calchash(self):
         #전체 string이라 가정
         nstr = hex(self.nonce)
