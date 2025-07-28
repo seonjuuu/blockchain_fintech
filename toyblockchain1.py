@@ -1,4 +1,3 @@
-#두 숫자 first, second를 받아 초기화
 class calc:
     def __init__(self,first,second):
         self.first=first
@@ -34,6 +33,7 @@ class block:
         self.nonce=0
         self.hash = self.calchash()
 
+    #채굴 과정
     def mineblock(self,difficulty):
         start=0
         prefix = self.timestamp+self.data+self.prehash
