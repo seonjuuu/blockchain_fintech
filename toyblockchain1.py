@@ -26,7 +26,7 @@ print("div:",a.div())
 
 import hashlib
 class block:
-    #초기화
+    #초기화(해시계산)
     def __init__(self,timestamp,data,prehash):
         self.timestamp = timestamp
         self.data = data
