@@ -80,6 +80,7 @@ class blockchain:
     def getlatestblock(self):
         return self.chain[self.len-1]
     
+    #새 블록을 생성하고 체인에 추가 (이전 블록의 해시값 연결)
     def addBlock(self,timestamp,data,difficulty):
         newblock = block(timestamp,data,'')
         newblock.prehash = self.getlatestblock().hash
