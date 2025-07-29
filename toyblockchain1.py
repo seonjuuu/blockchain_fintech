@@ -87,4 +87,6 @@ class blockchain:
         newblock.mineblock(difficulty)
         self.chain.append(newblock)
         self.len = self.len +1
+
+    def isChainValid(self):
     
