@@ -81,5 +81,7 @@ class blockchain:
         return self.chain[self.len-1]
     
     def addBlock(self,timestamp,data,difficulty):
+        newblock = block(timestamp,data,'')
+        newblock.prehash = self.getlatestblock().hash
         
     
