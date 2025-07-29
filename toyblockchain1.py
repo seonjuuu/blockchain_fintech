@@ -80,3 +80,6 @@ class blockchain:
     def getlatestblock(self):
         return self.chain[self.len-1]
     
+    def addBlock(self,timestamp,data,difficulty):
+        
+    
