@@ -92,3 +92,5 @@ class blockchain:
         for i in range(1, self.len):
             currBlock = self.chain[i]
             preBlock = self.chain[i-1]
+            if currBlock.hash != currBlock.calchash():
+                return 0
