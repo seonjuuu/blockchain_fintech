@@ -75,3 +75,6 @@ class blockchain:
         gen_block.mineblock(4)
         self.chain.append(gen_block)
         self.len =1
+
+    def getlatestblock(self):
+        return self.chain[self.len-1]
