@@ -88,6 +88,7 @@ class blockchain:
         self.chain.append(newblock)
         self.len = self.len +1
 
+    #모든 블록의 해시와 이전 해시가 일치하는지 검사 (체인 무결성 확인)
     def isChainValid(self):
         for i in range(1, self.len):
             currBlock = self.chain[i]
