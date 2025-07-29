@@ -89,4 +89,6 @@ class blockchain:
         self.len = self.len +1
 
     def isChainValid(self):
-    
+        for i in range(1, self.len):
+            currBlock = self.chain[i]
+            preBlock = self.chain[i-1]
