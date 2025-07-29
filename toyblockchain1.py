@@ -76,5 +76,7 @@ class blockchain:
         self.chain.append(gen_block)
         self.len =1
 
+    #현재 체인에서 가장 마지막 블록을 반환 
     def getlatestblock(self):
         return self.chain[self.len-1]
+    
