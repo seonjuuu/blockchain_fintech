@@ -116,3 +116,10 @@ class blockchain:
             print("hash:",self.chain[i].hash)
             print("nonce:",self.chain[i].nonce)
             print("")
+
+sswuCoin = blockchain()
+sswuCoin.addBlock('20231112','1000',4)
+sswuCoin.printBlockchain()
+
+print("is block valid?:", sswuCoin.isChainValid())
+  
