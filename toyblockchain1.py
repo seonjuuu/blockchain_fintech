@@ -108,6 +108,7 @@ class blockchain:
         print("")
 
     def printBlockchain(self):
+        for i in range(0,self.len):
             print("Block index:",i)
             print("timestamp:",self.chain[i].timestamp)
             print("data:",self.chain[i].data)
