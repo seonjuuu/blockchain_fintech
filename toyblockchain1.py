@@ -106,3 +106,12 @@ class blockchain:
         print("prehash:",self.chain[idx].prehash)
         print("hash:",self.chain[idx].hash)
         print("")
+
+    def printBlockchain(self):
+            print("Block index:",i)
+            print("timestamp:",self.chain[i].timestamp)
+            print("data:",self.chain[i].data)
+            print("prehash:",self.chain[i].prehash)
+            print("hash:",self.chain[i].hash)
+            print("nonce:",self.chain[i].nonce)
+            print("")
