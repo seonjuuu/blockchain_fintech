@@ -114,4 +114,5 @@ class blockchain:
             print("data:",self.chain[i].data)
             print("prehash:",self.chain[i].prehash)
             print("hash:",self.chain[i].hash)
-            
+            print("nonce:",self.chain[i].nonce)
+            print("")
