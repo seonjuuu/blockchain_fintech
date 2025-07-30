@@ -98,3 +98,11 @@ class blockchain:
             if currBlock.prehash != preBlock.hash:
                 return 0
         return 1
+    
+    def printBlock(self,idx):
+        print("Block index:",idx)
+        print("timestamp:",self.chain[idx].timestamp)
+        print("data:",self.chain[idx].data)
+        print("prehash:",self.chain[idx].prehash)
+        print("hash:",self.chain[idx].hash)
+        print("")
