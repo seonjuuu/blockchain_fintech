@@ -120,3 +120,5 @@ class blockchain:
 sswuCoin = blockchain()
 sswuCoin.addBlock('20231112','1000',4)
 sswuCoin.printBlockchain()
+
+print("is block valid?:", sswuCoin.isChainValid())
