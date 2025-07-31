@@ -25,7 +25,8 @@ def is_oncurve(x,y):
     else:
         return 1
     
-
+    
+# 확장 유클리드 알고리즘으로 GCD와 계수 반환
 def bin_extgcd(x,y):
     tx = x
     ty = y
