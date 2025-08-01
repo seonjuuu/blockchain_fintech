@@ -112,3 +112,8 @@ def pt_dbl(px, py):
     #t0*t0inv ==1
     #print("chk: ",(t0*t0inv)%p)
     t0 = (t1*t0inv)%p
+
+    rx = (t0**2-px-px)%p
+    ry = (t0*(px-rx)-py)%p
+
+    return rx, ry
