@@ -101,6 +101,7 @@ def pt_add(px,py, qx,qy):
 
 
 #R=2P
+#점 P의 두 배 계산
 def pt_dbl(px, py):
     #3px^2
     t0 = px**2  #px^2
