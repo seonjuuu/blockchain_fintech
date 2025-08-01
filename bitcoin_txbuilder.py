@@ -86,6 +86,7 @@ def mod_inv(x,q):
 #print(mod_inv(3,7))
 
 #R=P+Q
+#타원곡선 위 두 점의 합 계산
 def pt_add(px,py, qx,qy):
     #lambda = t0/t1
     t0 = (py-qy)
