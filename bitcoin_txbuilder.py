@@ -84,3 +84,7 @@ def mod_inv(x,q):
     return xinv
 
 #print(mod_inv(3,7))
+
+#R=P+Q
+def pt_add(px,py, qx,qy):
+    
