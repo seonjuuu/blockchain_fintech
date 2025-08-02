@@ -134,7 +134,7 @@ def pt_dbl_proj(x,y,z):
     return rx, ry, rz
 
 
-
+#프로젝티브 좌표계에서 점 덧셈
 def pt_add_proj(X,Y,Z, x,y,z):
 
     oX = (Z*x - X*z)*(-((Z*x)**3 - X*((Z*x)**2)*z - (Z**3)*(y**2)*z - (X**2)*Z*x*(z**2) + 2*Y*(Z**2)*y*(z**2) + (X*z)**3 - (Y**2)*Z*(z**3)))
