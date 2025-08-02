@@ -132,3 +132,7 @@ def pt_dbl_proj(x,y,z):
     rz = rz%p
 
     return rx, ry, rz
+
+
+
+def pt_add_proj(X,Y,Z, x,y,z):
