@@ -144,3 +144,5 @@ def pt_add_proj(X,Y,Z, x,y,z):
     oX=oX%p
     oY=oY%p
     oZ=oZ%p
+
+    return oX, oY, oZ
