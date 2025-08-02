@@ -118,3 +118,6 @@ def pt_dbl(px, py):
     ry = (t0*(px-rx)-py)%p
 
     return rx, ry
+
+
+def pt_dbl_proj(x,y,z):
