@@ -147,7 +147,7 @@ def pt_add_proj(X,Y,Z, x,y,z):
 
     return oX, oY, oZ
     
-    
+
 #[k]P 스칼라 곱
 def kmul(k, X, Y, Z):
     tx = X
@@ -164,3 +164,8 @@ def kmul(k, X, Y, Z):
     #        print("bit :  1")
         i= i>>1
     return tx, ty, tz
+
+
+### ECDSA ###
+
+def ecdsa_keygen():
