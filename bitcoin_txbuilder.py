@@ -146,3 +146,6 @@ def pt_add_proj(X,Y,Z, x,y,z):
     oZ=oZ%p
 
     return oX, oY, oZ
+    
+
+def kmul(k, X, Y, Z):
