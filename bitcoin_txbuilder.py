@@ -168,6 +168,8 @@ def kmul(k, X, Y, Z):
 
 ### ECDSA ###
 
+
+#개인키와 공개키 쌍 생성
 def ecdsa_keygen():
     # 개인키 선택
     d = random.randrange(1,n)
