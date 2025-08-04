@@ -149,3 +149,10 @@ def pt_add_proj(X,Y,Z, x,y,z):
     
 
 def kmul(k, X, Y, Z):
+
+    tx = X
+    ty = Y
+    tz = Z
+    kbit = k.bit_length()
+    i = 1
+    i = i <<(kbit-2)
