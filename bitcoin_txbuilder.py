@@ -181,3 +181,6 @@ def ecdsa_keygen():
     Qy=(Y*zinv)%p
     
     return d, Qx, Qy
+
+
+def ecdsa_siggen(m, d):
