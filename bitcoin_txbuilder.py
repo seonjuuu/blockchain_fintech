@@ -228,3 +228,7 @@ def ecdsa_verify(m,r,s,qx,qy):
         return 1
     else:
         return 0
+
+d, qx, qy = ecdsa_keygen() #키생성
+r,s = ecdsa_siggen("abc",d)
+print("ECDSA VERIFY:",ecdsa_verify("abc",r,s,qx,qy))
