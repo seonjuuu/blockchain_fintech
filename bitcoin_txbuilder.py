@@ -205,3 +205,6 @@ def ecdsa_siggen(m, d):
             else:
                 flag=0
     return r,s
+
+
+def ecdsa_verify(m,r,s,qx,qy):
