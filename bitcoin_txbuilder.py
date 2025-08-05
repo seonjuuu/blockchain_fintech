@@ -207,6 +207,7 @@ def ecdsa_siggen(m, d):
     return r,s
 
 
+#서명이 유효한지 공개키로 검증
 def ecdsa_verify(m,r,s,qx,qy):
     emsg = m.encode()
     h = hashlib.sha256(emsg).hexdigest()
