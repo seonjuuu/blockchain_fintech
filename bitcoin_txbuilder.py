@@ -184,3 +184,7 @@ def ecdsa_keygen():
 
 
 def ecdsa_siggen(m, d):
+    emsg = m.encode()
+    h = hashlib.sha256(emsg).hexdigest()
+    h = int(h,16)
+    flag=0
