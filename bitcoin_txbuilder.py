@@ -223,3 +223,7 @@ def ecdsa_verify(m,r,s,qx,qy):
     u2x = (X2*Zinv)%p
     u2y = (Y2*Zinv)%p
     rx, _ = pt_add(u1x,u1y,u2x,u2y)
+    if (r%n) ==(rx%n):
+        return 1
+    else:
+        return 0
