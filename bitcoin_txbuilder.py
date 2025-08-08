@@ -256,3 +256,6 @@ def dec_to_little_endian_str(n,tlen):
         ret = ret+n_str[i-1]
         ret = ret+n_str[i]
     return ret
+
+
+def hex_to_little_endian_str(n,tlen):
