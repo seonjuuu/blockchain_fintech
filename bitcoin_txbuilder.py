@@ -257,7 +257,7 @@ def dec_to_little_endian_str(n,tlen):
         ret = ret+n_str[i]
     return ret
 
-
+# 정수 n을 지정 길이의 little-endian 16진 문자열로 변환
 def hex_to_little_endian_str(n,tlen):
     tmp = n
     while len(tmp)!= (tlen):
