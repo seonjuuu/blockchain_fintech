@@ -244,3 +244,6 @@ def form_length(n):
 
 a='345'
 print("result :",form_length(a))
+
+##
+def dec_to_little_endian_str(n,tlen):
