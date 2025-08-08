@@ -259,3 +259,11 @@ def dec_to_little_endian_str(n,tlen):
 
 
 def hex_to_little_endian_str(n,tlen):
+    tmp = n
+    while len(tmp)!= (tlen):
+        tmp = '0' + tmp
+    ret=''
+    for i in range(len(tmp)-1,-1,-2):
+        ret = ret+tmp[i-1]
+        ret = ret+tmp[i]
+    return ret
