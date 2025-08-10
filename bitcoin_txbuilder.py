@@ -270,3 +270,7 @@ def hex_to_little_endian_str(n,tlen):
 
 
 def base58_to_hex(n):
+    b58="123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+    tmp = n
+    tmp = tmp[::-1]
+    exp =0
