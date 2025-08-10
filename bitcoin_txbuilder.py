@@ -269,6 +269,7 @@ def hex_to_little_endian_str(n,tlen):
     return ret
 
 
+#Base58 주소 문자열을 16진수로 디코딩
 def base58_to_hex(n):
     b58="123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
     tmp = n
