@@ -292,6 +292,8 @@ tmp =305419896 #0x(12)(34)(56)(78) -> (78)(56)(34)(12)
 print(dec_to_little_endian_str(tmp,4))
 
 
+# Transaction input
+# Version (4byte) | input cnt (1byte) | previous txid | output idx (4byte) | scriptlen(x) | scriptsig(x) | seqence (4byte)
 ver = '01000000'
 incnt = dec_to_little_endian_str(1,1)
 pre_txid ='7b46bff49c3eeb7b10c37aca0b930e06bae473f99f34e9c9f45451653847ed6b'
