@@ -274,3 +274,9 @@ def base58_to_hex(n):
     tmp = n
     tmp = tmp[::-1]
     exp =0
+    ret =0
+    for i in tmp:
+        idx = b58.find(i)
+        ret = ret + idx*(58**exp)
+        exp=exp+1
+    return hex(ret)[2:]
