@@ -287,3 +287,6 @@ def base58_to_hex(n):
 def wallet_to_pub(n):
     pub = n[2:len(n)-8]
     return pub , (len(pub)>>1)
+
+tmp =305419896 #0x(12)(34)(56)(78) -> (78)(56)(34)(12)
+print(dec_to_little_endian_str(tmp,4))
