@@ -290,3 +290,11 @@ def wallet_to_pub(n):
 
 tmp =305419896 #0x(12)(34)(56)(78) -> (78)(56)(34)(12)
 print(dec_to_little_endian_str(tmp,4))
+
+
+ver = '01000000'
+incnt = dec_to_little_endian_str(1,1)
+pre_txid ='7b46bff49c3eeb7b10c37aca0b930e06bae473f99f34e9c9f45451653847ed6b'
+pre_txid = hex_to_little_endian_str(pre_txid,len(pre_txid))
+oidx = dec_to_little_endian_str(0,4)
+seq = 'ffffffff'
