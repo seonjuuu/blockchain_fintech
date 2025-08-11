@@ -300,3 +300,6 @@ pre_txid ='7b46bff49c3eeb7b10c37aca0b930e06bae473f99f34e9c9f45451653847ed6b'
 pre_txid = hex_to_little_endian_str(pre_txid,len(pre_txid))
 oidx = dec_to_little_endian_str(0,4)
 seq = 'ffffffff'
+
+#Transaction output
+ocnt = dec_to_little_endian_str(2,1)
