@@ -313,3 +313,5 @@ pub0, plen0 = wallet_to_pub(add0)
 spub0 = '76a9' + dec_to_little_endian_str(plen0,1) + pub0 + '88ac'
 slen0 = len(spub0)>>1
 slen0 = dec_to_little_endian_str(slen0,1)
+
+out0 = val0+slen0+spub0
