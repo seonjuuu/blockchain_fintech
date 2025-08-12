@@ -315,3 +315,7 @@ slen0 = len(spub0)>>1
 slen0 = dec_to_little_endian_str(slen0,1)
 
 out0 = val0+slen0+spub0
+
+#output 1
+val1 = int(0.0172902*(10**8))
+val1 = dec_to_little_endian_str(val1,8)
