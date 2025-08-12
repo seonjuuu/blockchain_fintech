@@ -309,3 +309,7 @@ val0 = int(0.03664619*(10**8)) #BTC -> Satoshi
 val0 = dec_to_little_endian_str(val0,8)
 add0 ='mt6URnuGsPZxDAPYLEBypA4BBbZ36cH9yv'
 add0 = base58_to_hex(add0)
+pub0, plen0 = wallet_to_pub(add0)
+spub0 = '76a9' + dec_to_little_endian_str(plen0,1) + pub0 + '88ac'
+slen0 = len(spub0)>>1
+slen0 = dec_to_little_endian_str(slen0,1)
