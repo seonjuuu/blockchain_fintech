@@ -307,3 +307,5 @@ ocnt = dec_to_little_endian_str(2,1)
 #output 0
 val0 = int(0.03664619*(10**8)) #BTC -> Satoshi
 val0 = dec_to_little_endian_str(val0,8)
+add0 ='mt6URnuGsPZxDAPYLEBypA4BBbZ36cH9yv'
+add0 = base58_to_hex(add0)
