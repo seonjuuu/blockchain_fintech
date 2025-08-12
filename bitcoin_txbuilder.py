@@ -321,3 +321,7 @@ val1 = int(0.0172902*(10**8))
 val1 = dec_to_little_endian_str(val1,8)
 add1 = 'mvqjQUERnKZbH9knpka5HEsQ9eraQrEQQa'
 add1 = base58_to_hex(add1)
+pub1, plen1 = wallet_to_pub(add1)
+spub1 = '76a9' + dec_to_little_endian_str(plen1,1) + pub1 + '88ac'
+slen1 = len(spub1)>>1
+slen1 = dec_to_little_endian_str(slen1,1)
