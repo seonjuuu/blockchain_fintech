@@ -303,3 +303,7 @@ seq = 'ffffffff'
 
 #Transaction output
 ocnt = dec_to_little_endian_str(2,1)
+
+#output 0
+val0 = int(0.03664619*(10**8)) #BTC -> Satoshi
+val0 = dec_to_little_endian_str(val0,8)
