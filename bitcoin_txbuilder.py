@@ -345,3 +345,8 @@ print("msg:",msg)
 
 d, qx, qy = ecdsa_keygen()
 r,s = ecdsa_siggen(msg,d)
+
+#script sig
+#Siglength (1byte)|seq (0x03)|scriptlen|tag|rlen|r|tag|s|slen|hashtype (0x01)|publen|pubkey (04qxqy)
+#Siglength = seq ~ hashtype
+#scriptlen = tag|r|rlen|tag|s|slen
