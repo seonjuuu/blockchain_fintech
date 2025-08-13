@@ -350,3 +350,9 @@ r,s = ecdsa_siggen(msg,d)
 #Siglength (1byte)|seq (0x03)|scriptlen|tag|rlen|r|tag|s|slen|hashtype (0x01)|publen|pubkey (04qxqy)
 #Siglength = seq ~ hashtype
 #scriptlen = tag|r|rlen|tag|s|slen
+script_seq = '03'
+tag='02'
+r =hex(r)[2:]
+r=form_length(r)
+rlen = len(r)>>1
+rlen = dec_to_little_endian_str(rlen,1)
