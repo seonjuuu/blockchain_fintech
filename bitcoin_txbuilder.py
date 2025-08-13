@@ -339,3 +339,6 @@ ladd = dec_to_little_endian_str(ladd,1)
 
 prefix = ver + incnt + pre_txid + oidx
 out = ocnt + out0 + out1 + locktime + '01000000'
+
+msg = prefix + ladd + myadd + seq +out
+print("msg:",msg)
