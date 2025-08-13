@@ -356,3 +356,8 @@ r =hex(r)[2:]
 r=form_length(r)
 rlen = len(r)>>1
 rlen = dec_to_little_endian_str(rlen,1)
+
+s = hex(s)[2:]
+s=form_length(s)
+slen = len(s)>>1
+slen = dec_to_little_endian_str(slen,1)
