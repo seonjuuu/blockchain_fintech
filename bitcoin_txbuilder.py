@@ -342,3 +342,6 @@ out = ocnt + out0 + out1 + locktime + '01000000'
 
 msg = prefix + ladd + myadd + seq +out
 print("msg:",msg)
+
+d, qx, qy = ecdsa_keygen()
+r,s = ecdsa_siggen(msg,d)
