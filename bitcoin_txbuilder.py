@@ -332,3 +332,7 @@ locktime = '00000000'
 myadd = '76a9147943d227e90eed9549503b32ae140b8a12ff44ae88ac'
 ladd = len(myadd)>>1
 ladd = dec_to_little_endian_str(ladd,1)
+
+# Transaction input
+# Ver(4byte)|input cnt(1byte)|previous txid|output idx(4byte)|scriptlen(x)=>ladd|scriptsig(x)=>myadd|seq(4byte)
+# |ocnt|out0|out1|locktime|01000000
