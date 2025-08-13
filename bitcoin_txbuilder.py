@@ -336,3 +336,6 @@ ladd = dec_to_little_endian_str(ladd,1)
 # Transaction input
 # Ver(4byte)|input cnt(1byte)|previous txid|output idx(4byte)|scriptlen(x)=>ladd|scriptsig(x)=>myadd|seq(4byte)
 # |ocnt|out0|out1|locktime|01000000
+
+prefix = ver + incnt + pre_txid + oidx
+out = ocnt + out0 + out1 + locktime + '01000000'
