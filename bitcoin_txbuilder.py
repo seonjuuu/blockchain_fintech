@@ -327,3 +327,8 @@ slen1 = len(spub1)>>1
 slen1 = dec_to_little_endian_str(slen1,1)
 
 out1 = val1+slen1+spub1
+
+locktime = '00000000'
+myadd = '76a9147943d227e90eed9549503b32ae140b8a12ff44ae88ac'
+ladd = len(myadd)>>1
+ladd = dec_to_little_endian_str(ladd,1)
