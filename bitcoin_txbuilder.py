@@ -361,3 +361,8 @@ s = hex(s)[2:]
 s=form_length(s)
 slen = len(s)>>1
 slen = dec_to_little_endian_str(slen,1)
+
+tmp0 = tag + r + rlen + tag + s + slen
+script_len = len(tmp0)>>1
+script_len = dec_to_little_endian_str(script_len,1)
+
