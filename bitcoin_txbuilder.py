@@ -366,3 +366,6 @@ tmp0 = tag + r + rlen + tag + s + slen
 script_len = len(tmp0)>>1
 script_len = dec_to_little_endian_str(script_len,1)
 
+tmp1 = script_seq+script_len+tmp0+'01'
+siglen = len(tmp1)>>1
+siglen = dec_to_little_endian_str(siglen,1)
