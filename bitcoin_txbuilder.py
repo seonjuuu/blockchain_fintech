@@ -385,3 +385,7 @@ total_len = dec_to_little_endian_str(total_len,1)
 
 # Ver(4byte)|input cnt(1byte)|previous txid|output idx(4byte)|scriptlen(x)=>ladd|scriptsig(x)=>myadd|seq(4byte)
 # |ocnt|out0|out1|locktime|01000000
+
+tmp2 = prefix + total_len + scriptSig + seq + out
+
+print(tmp2)
