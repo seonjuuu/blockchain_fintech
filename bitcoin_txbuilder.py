@@ -396,3 +396,5 @@ h=hashlib.sha256(tmp2).hexdigest()
 h=int(h,16)
 h=hex(h)[2:].encode()
 txid=hashlib.sha256(h).hexdigest()
+
+print("txid:",txid)
