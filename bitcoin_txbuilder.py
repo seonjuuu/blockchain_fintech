@@ -389,3 +389,10 @@ total_len = dec_to_little_endian_str(total_len,1)
 tmp2 = prefix + total_len + scriptSig + seq + out
 
 print(tmp2)
+
+#final -> txid
+tmp2 = tmp2.encode()
+h=hashlib.sha256(tmp2).hexdigest()
+h=int(h,16)
+h=hex(h)[2:].encode()
+txid=hashlib.sha256(h).hexdigest()
