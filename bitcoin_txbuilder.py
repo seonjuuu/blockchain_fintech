@@ -378,3 +378,7 @@ qy = form_length(qy)
 pubkey = '04'+qx+qy
 publen = len(pubkey)>>1
 publen = dec_to_little_endian_str(publen,1)
+
+scriptSig = siglen + tmp1 + publen + pubkey
+total_len = len(scriptSig)>>1
+total_len = dec_to_little_endian_str(total_len,1)
