@@ -369,3 +369,12 @@ script_len = dec_to_little_endian_str(script_len,1)
 tmp1 = script_seq+script_len+tmp0+'01'
 siglen = len(tmp1)>>1
 siglen = dec_to_little_endian_str(siglen,1)
+
+#pubkey
+qx = hex(qx)[2:]
+qx = form_length(qx)
+qy = hex(qy)[2:]
+qy = form_length(qy)
+pubkey = '04'+qx+qy
+publen = len(pubkey)>>1
+publen = dec_to_little_endian_str(publen,1)
