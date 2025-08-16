@@ -85,3 +85,15 @@ def mod_inv(x,q):
     return xinv
 
 #print(mod_inv(3,7))
+
+#R=P+Q
+def pt_add(px,py, qx,qy):
+    #lambda = t0/t1
+    t0 = (py-qy)
+    t1 = (px-qx)
+    t1inv = mod_inv(t1,p)# t1^-1
+
+    t0 = (t0*t1inv)%p
+    rx = (t0**2-px-qx)%p
+    ry = (t0*(px-rx)-py)%p
+    return rx, ry
