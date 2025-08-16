@@ -13,8 +13,10 @@ gy=0x483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8
 a=0
 b=7
 
+
 # 0 : on curve
 # 1 : not on curve 
+# 점 (x, y)가 타원곡선 위에 있는지 판별
 def is_oncurve(x,y):
     t0 = (x**3+a*x+b)%p
     t1 = (y**2)%p
