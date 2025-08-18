@@ -145,3 +145,19 @@ def pt_add_proj(X,Y,Z, x,y,z):
     oZ=oZ%p
 
     return oX, oY, oZ
+
+def kmul(k, X, Y, Z):
+    tx = X
+    ty = Y
+    tz = Z
+    kbit = k.bit_length()
+    i = 1
+    i = i <<(kbit-2)
+    while(i!=0):
+        chk = (k&i)
+        tx, ty, tz = pt_dbl_proj(tx, ty, tz)
+        if(chk): #chk!=0, 현재 비트 1
+            tx, ty, tz = pt_add_proj(tx, ty, tz,X, Y,Z)
+    #        print("bit :  1")
+        i= i>>1
+    return tx, ty, tz
