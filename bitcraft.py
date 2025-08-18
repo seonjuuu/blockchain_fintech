@@ -1,4 +1,3 @@
-
 import time
 import hashlib
 import binascii
@@ -98,4 +97,22 @@ def pt_add(px,py, qx,qy):
     t0 = (t0*t1inv)%p
     rx = (t0**2-px-qx)%p
     ry = (t0*(px-rx)-py)%p
+    return rx, ry
+
+
+def pt_dbl(px, py):
+    #3px^2
+    t0 = px**2  #px^2
+    t1 = t0+t0 # 2px^2
+    t1 = (t1 + t0)%p #3px^2
+
+    t0 = (py+py)%p
+    t0inv = mod_inv(t0, p)
+    #t0*t0inv ==1
+    #print("chk: ",(t0*t0inv)%p)
+    t0 = (t1*t0inv)%p
+
+    rx = (t0**2-px-px)%p
+    ry = (t0*(px-rx)-py)%p
+
     return rx, ry
