@@ -119,6 +119,7 @@ def pt_dbl(px, py):
     return rx, ry
 
 
+# 프로젝티브 좌표계에서 두 배 연산 수행
 def pt_dbl_proj(x,y,z):
     rx = 2*x*y*z*(9*(x**3)-8*(y**2)*z)
     rx = rx%p
