@@ -146,6 +146,8 @@ def pt_add_proj(X,Y,Z, x,y,z):
 
     return oX, oY, oZ
 
+
+# 스칼라 곱 연산: [k]P 계산
 def kmul(k, X, Y, Z):
     tx = X
     ty = Y
