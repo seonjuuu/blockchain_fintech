@@ -177,6 +177,8 @@ def dec_to_little_endian_str(n,tlen):
         ret = ret+n_str[i]
     return ret
 
+
+# hex 문자열을 little-endian으로 변환
 def hex_to_little_endian_str(n,tlen):
     n_str = n
     while len(n_str)  != (tlen):
