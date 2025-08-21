@@ -212,6 +212,7 @@ def wallet_to_pub(n):
 
 ### ECDSA ###
 
+#ECDSA 개인키 생성 및 공개키 계산
 def ecdsa_keygen():
     # 개인키 선택
     d = random.randrange(1,n)
