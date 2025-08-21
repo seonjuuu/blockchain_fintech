@@ -211,3 +211,15 @@ def wallet_to_pub(n):
 
 
 ### ECDSA ###
+
+def ecdsa_keygen():
+    # 개인키 선택
+    d = random.randrange(1,n)
+    # 공개키 연산 Q = [d]G
+    X,Y,Z = kmul(d, gx, gy, 1)
+    zinv=mod_inv(Z,p)
+
+    Qx=(X*zinv)%p
+    Qy=(Y*zinv)%p
+    
+    return d, Qx, Qy
