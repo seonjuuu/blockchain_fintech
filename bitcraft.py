@@ -273,3 +273,8 @@ def ecdsa_verify(m,r,s,qx,qy):
         return 0
     
 
+def form_length(n):
+    tmp=n
+    while len(tmp)!=64:
+        tmp = '0'+tmp
+    return tmp
