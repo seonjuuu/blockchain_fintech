@@ -284,6 +284,8 @@ def form_length(n):
 incnt = 2
 inn0=['7b46bff49c3eeb7b10c37aca0b930e06bae473f99f34e9c9f45451653847ed6b',0]
 inn1=['7b46bff49c3eeb7b10c37aca0b930e06bae473f99f34e9c9f45451653847ed6b',1]
+
+# 트랜잭션 입력 부분(이전 UTXO 등) 구성
 def tx_in(incnt, *inn):
     ver='01000000' #버전값
     in_str = dec_to_little_endian_str(incnt,1)
