@@ -289,3 +289,16 @@ def tx_in(incnt, *inn):
     in_str = dec_to_little_endian_str(incnt,1)
     head = ver+in_str
     ret=[]
+    for i in range(0, incnt):
+        a=""
+        tmp=hex_to_little_endian_str(inn[i][0],len(inn[i][0]))
+        a=a+tmp
+        tmp=dec_to_little_endian_str(inn[i][1],4)
+        a=a+tmp
+        ret.append(a)
+    return head, ret
+#print(tx_in(incnt,inn0,inn1))
+
+#
+out1=[0.03664619,'mt6URnuGsPZxDAPYLEBypA4BBbZ36cH9yv']
+out2=[0.0172902,'mvqjQUERnKZbH9knpka5HEsQ9eraQrEQQa']
