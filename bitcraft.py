@@ -305,6 +305,7 @@ def tx_in(incnt, *inn):
 out1=[0.03664619,'mt6URnuGsPZxDAPYLEBypA4BBbZ36cH9yv']
 out2=[0.0172902,'mvqjQUERnKZbH9knpka5HEsQ9eraQrEQQa']
 
+# 트랜잭션 출력 부분(수신자 주소 및 금액) 구성
 def tx_out(outcnt, *out):
     ret=dec_to_little_endian_str(outcnt,1)
 
