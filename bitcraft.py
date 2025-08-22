@@ -278,3 +278,9 @@ def form_length(n):
     while len(tmp)!=64:
         tmp = '0'+tmp
     return tmp
+
+
+##5시작
+incnt = 2
+inn0=['7b46bff49c3eeb7b10c37aca0b930e06bae473f99f34e9c9f45451653847ed6b',0]
+inn1=['7b46bff49c3eeb7b10c37aca0b930e06bae473f99f34e9c9f45451653847ed6b',1]
