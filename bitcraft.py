@@ -307,3 +307,17 @@ out2=[0.0172902,'mvqjQUERnKZbH9knpka5HEsQ9eraQrEQQa']
 
 def tx_out(outcnt, *out):
     ret=dec_to_little_endian_str(outcnt,1)
+
+    for i in range(0, outcnt):
+        a=''
+        val = int(out[i][0]*(10**8))
+        val = dec_to_little_endian_str(val,8)
+        tmp = base58_to_hex(out[i][1])
+        pub, publen =wallet_to_pub(tmp)
+        spkey = '76a9' +dec_to_little_endian_str(publen,1)+pub+'88ac'
+        slen = len(spkey)>>1  #2로 나눠줘야 byte단위로
+        slen = dec_to_little_endian_str(slen,1)
+        a = val +slen + spkey
+        ret = ret+a
+    ret =ret+'00000000' #locktime
+    return ret
