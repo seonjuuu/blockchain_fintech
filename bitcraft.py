@@ -363,3 +363,7 @@ head, inn = tx_in(1, inn0)
 out = tx_out(2,out1,out2)
 
 def gen_txid(head, inn, out, add, d, qx, qy):
+    tlen_list=[]
+    script_list=[]
+    addlen = len(add)>>1
+    addlen = dec_to_little_endian_str(addlen,1)
