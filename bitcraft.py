@@ -326,3 +326,6 @@ def tx_out(outcnt, *out):
 out = tx_out(2,out1,out2)
 #print(tx_out(2,out1,out2))
 
+#
+def gen_script_sig(r,s,qx,qy):
+
