@@ -353,3 +353,5 @@ def gen_script_sig(r,s,qx,qy):
     script = siglen + script + plen + pkey
     total_len = len(script)>>1
     total_len = dec_to_little_endian_str(total_len,1)
+
+    return total_len, script
