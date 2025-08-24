@@ -333,4 +333,9 @@ def gen_script_sig(r,s,qx,qy):
     rtmp =hex(r)[2:]
     rtmp =form_length(rtmp)
     stmp =hex(s)[2:]
+    stmp =form_length(stmp)
+    rlen = dec_to_little_endian_str(len(rtmp)>>1,1)
+    slen = dec_to_little_endian_str(len(stmp)>>1,1)
+    script = tag +rlen + rtmp +tag + slen +stmp
+    
 
