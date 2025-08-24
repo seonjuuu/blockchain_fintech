@@ -356,3 +356,8 @@ def gen_script_sig(r,s,qx,qy):
     total_len = dec_to_little_endian_str(total_len,1)
 
     return total_len, script
+
+
+#
+head, inn = tx_in(1, inn0)
+out = tx_out(2,out1,out2)
