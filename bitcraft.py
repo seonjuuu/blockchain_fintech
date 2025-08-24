@@ -361,3 +361,5 @@ def gen_script_sig(r,s,qx,qy):
 #
 head, inn = tx_in(1, inn0)
 out = tx_out(2,out1,out2)
+
+def gen_txid(head, inn, out, add, d, qx, qy):
