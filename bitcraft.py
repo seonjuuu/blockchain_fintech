@@ -342,3 +342,10 @@ def gen_script_sig(r,s,qx,qy):
     siglen = len(script)>>1
     siglen = dec_to_little_endian_str(siglen,1)
 
+    qxtmp = hex(qx)[2:]
+    qytmp = hex(qy)[2:]
+    qxtmp =form_length(qxtmp)
+    qytmp = form_length(qytmp)
+    pkey = '04'+qxtmp +qytmp
+    plen = len(pkey)>>1
+    plen = dec_to_little_endian_str(plen,1)
