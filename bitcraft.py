@@ -397,3 +397,7 @@ def gen_txid(head, inn, out, add, d, qx, qy):
     txid = hashlib.sha256(txid).hexdigest()
 
     return txid
+
+d, qx, qy = ecdsa_keygen()
+myadd ='76a9147943d227e90eed9549503b32ae140b8a12ff44ae88ac'
+print(gen_txid(head, inn, out, myadd, d, qx, qy))
