@@ -395,3 +395,5 @@ def gen_txid(head, inn, out, add, d, qx, qy):
     txid = int(txid,16)
     txid = hex(txid)[2:].encode()
     txid = hashlib.sha256(txid).hexdigest()
+
+    return txid
