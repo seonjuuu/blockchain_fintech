@@ -389,3 +389,9 @@ def gen_txid(head, inn, out, add, d, qx, qy):
         txid = txid + tlen_list[i]
         txid = txid + script_list[i]+'ffffffff'
     txid = txid + out +'01000000'
+    # hash 두번
+    txid = txid.encode()
+    txid = hashlib.sha256(txid).hexdigest()
+    txid = int(txid,16)
+    txid = hex(txid)[2:].encode()
+    txid = hashlib.sha256(txid).hexdigest()
