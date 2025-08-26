@@ -75,3 +75,9 @@ def bin_extgcd(x,y):
     
     
     return a, b, (g*v)
+
+
+# x^-1 mod q
+def mod_inv(x,q):
+    xinv,_ , _ = bin_extgcd(x,q)
+    return xinv
