@@ -23,3 +23,20 @@ def is_oncurve(x,y):
         return 0
     else:
         return 1
+    
+
+def bin_extgcd(x,y):
+    tx = x
+    ty = y
+    g=1
+    while tx&1==0 and ty&1==0:
+        tx = tx>>1
+        ty = ty>>1
+        g = g<<1
+    u = tx
+    v = ty
+    A = 1
+    B = 0
+    C = 0
+    D = 1
+    flag =0
