@@ -170,6 +170,7 @@ def dec_to_little_endian_str(n,tlen):
     return ret
 
 
+# hex 문자열을 little-endian 형식으로 재배열
 def hex_to_little_endian_str(n,tlen):
     n_str = n
     while len(n_str)  != (tlen):
