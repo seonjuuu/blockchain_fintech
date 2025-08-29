@@ -228,3 +228,12 @@ def ecdsa_siggen(m, d):
         zinv=mod_inv(Z,p) #Z^-1
         x1 = (X*zinv)%p
         r = x1%n
+        if r!=0:
+            flag = 1
+            kinv = mod_inv(k,n)
+            s = (h+r*d)%n
+            s = (s*kinv)%n
+            if s!=0:
+                flag =1
+            else:
+                flag=0
