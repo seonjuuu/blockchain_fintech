@@ -247,3 +247,8 @@ def ecdsa_verify(m,r,s,qx,qy):
     sinv = mod_inv(s,n)
     u1 = (h*sinv)%n
     u2 = (r*sinv)%n
+    X, Y, Z = kmul(u1, gx, gy, 1)
+    X2,Y2,Z2 = kmul(u2,qx,qy,1)
+    Zinv = mod_inv(Z,p)
+    u1x = (X*Zinv)%p
+    u1y = (Y*Zinv)%p
