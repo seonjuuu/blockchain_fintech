@@ -222,3 +222,9 @@ def ecdsa_siggen(m, d):
     h = hashlib.sha256(emsg).hexdigest()
     h = int(h,16)
     flag=0
+    while flag==0:
+        k = random.randrange(1, n) #step 2
+        X,Y,Z = kmul(k, gx, gy, 1) #X/Z, Y/Z
+        zinv=mod_inv(Z,p) #Z^-1
+        x1 = (X*zinv)%p
+        r = x1%n
