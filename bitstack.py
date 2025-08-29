@@ -252,3 +252,7 @@ def ecdsa_verify(m,r,s,qx,qy):
     Zinv = mod_inv(Z,p)
     u1x = (X*Zinv)%p
     u1y = (Y*Zinv)%p
+    Zinv = mod_inv(Z2,p)
+    u2x = (X2*Zinv)%p
+    u2y = (Y2*Zinv)%p
+    rx, _ = pt_add(u1x,u1y,u2x,u2y)
