@@ -237,3 +237,4 @@ def ecdsa_siggen(m, d):
                 flag =1
             else:
                 flag=0
+    return r,s
