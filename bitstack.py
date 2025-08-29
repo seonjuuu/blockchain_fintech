@@ -241,3 +241,9 @@ def ecdsa_siggen(m, d):
 
 
 def ecdsa_verify(m,r,s,qx,qy):
+    emsg = m.encode()
+    h = hashlib.sha256(emsg).hexdigest()
+    h = int(h,16)
+    sinv = mod_inv(s,n)
+    u1 = (h*sinv)%n
+    u2 = (r*sinv)%n
