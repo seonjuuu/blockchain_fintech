@@ -215,3 +215,10 @@ def ecdsa_keygen():
     Qy=(Y*zinv)%p
     
     return d, Qx, Qy
+
+
+def ecdsa_siggen(m, d):
+    emsg = m.encode()
+    h = hashlib.sha256(emsg).hexdigest()
+    h = int(h,16)
+    flag=0
