@@ -286,3 +286,4 @@ def tx_in(incnt, *inn):
         a=a+tmp
         ret.append(a)
     return head, ret
+head, inn = tx_in(1, inn0)
