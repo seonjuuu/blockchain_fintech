@@ -293,3 +293,6 @@ head, inn = tx_in(1, inn0)
 
 out1=[0.03664619,'mt6URnuGsPZxDAPYLEBypA4BBbZ36cH9yv']
 out2=[0.0172902,'mvqjQUERnKZbH9knpka5HEsQ9eraQrEQQa']
+
+def tx_out(outcnt, *out):
+    ret=dec_to_little_endian_str(outcnt,1)
