@@ -278,3 +278,11 @@ def tx_in(incnt, *inn):
     in_str = dec_to_little_endian_str(incnt,1)
     head = ver+in_str
     ret=[]
+    for i in range(0, incnt):
+        a=""
+        tmp=hex_to_little_endian_str(inn[i][0],len(inn[i][0]))
+        a=a+tmp
+        tmp=dec_to_little_endian_str(inn[i][1],4)
+        a=a+tmp
+        ret.append(a)
+    return head, ret
