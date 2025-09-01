@@ -365,3 +365,10 @@ def gen_txid(head, inn, out, add, d, qx, qy):
         tlen, script = gen_script_sig(r,s,qx,qy)
         tlen_list.append(tlen)
         script_list.append(script)
+    # txid 생성을 위한 msg 생성
+    txid=head
+    for i in range(0,len(inn)):
+        txid = txid+inn[i]
+        txid = txid + tlen_list[i]
+        txid = txid + script_list[i]+'ffffffff'
+    txid = txid + out +'01000000'
