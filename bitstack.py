@@ -316,3 +316,9 @@ out = tx_out(2,out1,out2)
 
 
 def gen_script_sig(r,s,qx,qy):
+    seq='0x30'
+    tag='0x02'
+    rtmp =hex(r)[2:]
+    rtmp =form_length(rtmp)
+    stmp =hex(s)[2:]
+    stmp =form_length(stmp)
