@@ -326,4 +326,6 @@ def gen_script_sig(r,s,qx,qy):
     slen = dec_to_little_endian_str(len(stmp)>>1,1)
     script = tag +rlen + rtmp +tag + slen +stmp
     script_len = dec_to_little_endian_str(len(script)>>1,1)
-    
+    script = seq + script_len + script + '01'
+    siglen = len(script)>>1
+    siglen = dec_to_little_endian_str(siglen,1)
