@@ -315,6 +315,7 @@ def tx_out(outcnt, *out):
 out = tx_out(2,out1,out2)
 
 
+# r, s 서명값과 공개키로 scriptSig 생성
 def gen_script_sig(r,s,qx,qy):
     seq='0x30'
     tag='0x02'
