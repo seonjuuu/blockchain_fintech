@@ -347,3 +347,7 @@ def gen_script_sig(r,s,qx,qy):
 
 
 def gen_txid(head, inn, out, add, d, qx, qy):
+    tlen_list=[]
+    script_list=[]
+    addlen = len(add)>>1
+    addlen = dec_to_little_endian_str(addlen,1)
