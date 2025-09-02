@@ -390,3 +390,11 @@ print(gen_txid(head, inn, out, myadd, d, qx, qy))
 tx1='aff1d8261a5ac26d4749d4fae47eddda0e0845e63b2f8850462d75c6e050075e'
 tx2='aff1d8261a5ac26d4749d4fae47eddda0e0845e63b2f8850462d75c6e0500799'
 tx3='aff1d8261a5ac26d4749d4fae47eddda0e0845e63b2f8850462d75c6e0500aaa'
+
+def gen_merkle_root(*txid):
+    tmp=[]
+    for i in range(0, len(txid)):
+        tmp.append(txid[i])
+    if len(tmp)&1!=0:
+        tmp.append(txid[len(txid)-1])
+    rnd = len(tmp)>>1
