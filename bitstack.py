@@ -391,6 +391,7 @@ tx1='aff1d8261a5ac26d4749d4fae47eddda0e0845e63b2f8850462d75c6e050075e'
 tx2='aff1d8261a5ac26d4749d4fae47eddda0e0845e63b2f8850462d75c6e0500799'
 tx3='aff1d8261a5ac26d4749d4fae47eddda0e0845e63b2f8850462d75c6e0500aaa'
 
+# 다수의 txid로부터 머클 루트(Merkle Root) 계산
 def gen_merkle_root(*txid):
     tmp=[]
     for i in range(0, len(txid)):
