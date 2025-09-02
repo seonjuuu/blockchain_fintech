@@ -418,4 +418,13 @@ def gen_merkle_root(*txid):
     msg = hashlib.sha256(msg).hexdigest()
     msg = int(msg,16)
     msg = hex(msg)[2:].encode()
-    ret = hashlib.sha256(msg).hexdigest()   
+    ret = hashlib.sha256(msg).hexdigest() 
+
+    if chk==1:
+        msg = ret +tmp[2]
+        msg = msg.encode()
+        msg = hashlib.sha256(msg).hexdigest()
+        msg = int(msg,16)
+        msg =hex(msg)[2:].encode()
+        ret = hashlib.sha256(msg).hexdigest()
+    return ret  
