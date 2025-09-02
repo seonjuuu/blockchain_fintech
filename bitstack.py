@@ -398,3 +398,18 @@ def gen_merkle_root(*txid):
     if len(tmp)&1!=0:
         tmp.append(txid[len(txid)-1])
     rnd = len(tmp)>>1
+
+    while rnd !=1:
+        cnt=0
+        for i in range(0, rnd):
+            msg = tmp[(i<<1)]+tmp[(i<<1)+1]
+            msg = msg.encode()
+            msg = hashlib.sha256(msg).hexdigest()
+            msg = int(msg,16)
+            msg = hex(msg)[2:].encode()
+            msg = hashlib.sha256(msg).hexdigest()
+            tmp[cnt]=msg
+            cnt=cnt+1
+        chk = rnd&1
+        rnd = rnd>>1
+    print("chk:",chk)
