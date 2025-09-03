@@ -457,3 +457,12 @@ def little_to_big(n):
         ret = ret + n[i-1]
         ret = ret + n[i]
     return ret
+
+
+def print_headerinfo(head):
+    tmp = head
+    ver = tmp[:8]
+    ver = little_to_big(ver)
+    tmp = tmp[8:]
+    pre_hash = tmp[:64]
+    pre_hash = little_to_big(pre_hash)
