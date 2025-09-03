@@ -455,4 +455,3 @@ def little_to_big(n):
         ret = ret + n[i-1]
         ret = ret + n[i]
     return ret
-#print(little_to_big(tmp))
