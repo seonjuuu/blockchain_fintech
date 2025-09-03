@@ -429,3 +429,14 @@ def gen_merkle_root(*txid):
         msg =hex(msg)[2:].encode()
         ret = hashlib.sha256(msg).hexdigest()
     return ret  
+
+
+def dbl_sha(msg):
+    h = bytes.fromhex(msg)
+    #print("h:",h)
+    h = hashlib.sha256(h).hexdigest()
+    h = bytes.fromhex(h)
+    h = hashlib.sha256(h).hexdigest()
+    return h
+
+msg = 'abcd' #0xabcd
