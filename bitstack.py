@@ -449,6 +449,8 @@ tmp = dbl_sha(head)
 tmp = (hex_to_little_endian_str(tmp,len(tmp)))
 print(tmp)
 
+
+# little-endian 형식의 hex를 big-endian으로 변환
 def little_to_big(n):
     ret=''
     for i in range(len(n)-1,-1,-2):
