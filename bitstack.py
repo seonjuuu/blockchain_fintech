@@ -472,3 +472,11 @@ def print_headerinfo(head):
     tmp = tmp[64:]
     ntime = tmp[:8]
     ntime = little_to_big(ntime)
+    rtime = '0x'+ntime
+    rtime = int(rtime,16) #rtime을 16진수로 변형
+    rtime = datetime.datetime.utcfromtimestamp(rtime)
+    tmp = tmp[8:]
+    nbits = tmp[:8]
+    nbits = little_to_big(nbits)
+    tmp = tmp[8:]
+    nonce = little_to_big(tmp)
