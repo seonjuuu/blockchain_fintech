@@ -459,6 +459,7 @@ def little_to_big(n):
     return ret
 
 
+# 블록 헤더 hex에서 version, prev_hash, merkle_root, time 등 정보 파싱
 def print_headerinfo(head):
     tmp = head
     ver = tmp[:8]
