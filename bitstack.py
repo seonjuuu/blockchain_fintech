@@ -480,3 +480,11 @@ def print_headerinfo(head):
     nbits = little_to_big(nbits)
     tmp = tmp[8:]
     nonce = little_to_big(tmp)
+
+    print('=== header info ===')
+    print("version: ", ver)
+    print("previous hash: ", pre_hash)
+    print("Merkle root: ", mroot)
+    print("time: ", rtime)
+    print("nbits: ", nbits)
+    print("nonce: ", nonce)
