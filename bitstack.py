@@ -466,3 +466,9 @@ def print_headerinfo(head):
     tmp = tmp[8:]
     pre_hash = tmp[:64]
     pre_hash = little_to_big(pre_hash)
+    tmp = tmp[64:]
+    mroot = tmp[:64]
+    mroot = little_to_big(mroot)
+    tmp = tmp[64:]
+    ntime = tmp[:8]
+    ntime = little_to_big(ntime)
