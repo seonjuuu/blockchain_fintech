@@ -448,3 +448,11 @@ res = '0000000000000039b3f01eb4a72f82bd464657194ce6e855daa8d5cc433b490d'
 tmp = dbl_sha(head)
 tmp = (hex_to_little_endian_str(tmp,len(tmp)))
 print(tmp)
+
+def little_to_big(n):
+    ret=''
+    for i in range(len(n)-1,-1,-2):
+        ret = ret + n[i-1]
+        ret = ret + n[i]
+    return ret
+#print(little_to_big(tmp))
