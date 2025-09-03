@@ -440,3 +440,11 @@ def dbl_sha(msg):
     return h
 
 msg = 'abcd' #0xabcd
+
+#링크
+head = '00c0972d87bd61a769b6f77a6a20712dfaee83ba0aa39fae122c27ba37000000000000008511af2524a61cd5979c775900a34bb3ffc224e373c93f269819a04ee368dcc4b58f2765e0926719481df6c6'
+res = '0000000000000039b3f01eb4a72f82bd464657194ce6e855daa8d5cc433b490d'
+
+tmp = dbl_sha(head)
+tmp = (hex_to_little_endian_str(tmp,len(tmp)))
+print(tmp)
