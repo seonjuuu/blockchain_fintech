@@ -488,3 +488,6 @@ def print_headerinfo(head):
     print("time: ", rtime)
     print("nbits: ", nbits)
     print("nonce: ", nonce)
+    
+    return ver, pre_hash, mroot, ntime, nbits, nonce 
+
