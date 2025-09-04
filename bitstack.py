@@ -507,3 +507,7 @@ def set_bit(nbits):
         tmp = '00'+tmp
     return tmp
 print('difficulty:',calc_diff(nbits))
+
+start = '0x'+nonce
+start = int(start,16)
+start = start-10
