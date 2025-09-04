@@ -512,6 +512,10 @@ def calc_diff(nbits):
     gen_target = set_bit(gen)
     gen_target = '0x'+gen_target
     gen_target = int(gen_target,16)
+
+    curr_target = set_bit(nbits)
+    curr_target = '0x'+curr_target
+    curr_target = int(curr_target,16)
 print('difficulty:',calc_diff(nbits))
 
 start = '0x'+nonce
