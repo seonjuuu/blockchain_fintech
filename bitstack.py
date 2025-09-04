@@ -506,3 +506,4 @@ def set_bit(nbits):
     while len(tmp) != 64:
         tmp = '00'+tmp
     return tmp
+print('difficulty:',calc_diff(nbits))
