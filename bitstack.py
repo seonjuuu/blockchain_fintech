@@ -507,6 +507,8 @@ def set_bit(nbits):
         tmp = '00'+tmp
     return tmp
 
+
+# 현재 난이도로부터 difficulty 값 계산
 def calc_diff(nbits):
     gen = '1d00ffff'
     gen_target = set_bit(gen)
