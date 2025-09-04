@@ -494,6 +494,7 @@ def print_headerinfo(head):
 
 ver, pre_hash, mroot, ntime, nbits, nonce = print_headerinfo(head)
 
+# 압축된 난이도 nbits를 256비트 타겟 값으로 확장
 def set_bit(nbits):
     nbit_len = nbits[:2]
     nbit_len = '0x'+nbit_len
