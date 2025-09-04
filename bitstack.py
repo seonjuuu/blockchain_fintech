@@ -508,6 +508,10 @@ def set_bit(nbits):
     return tmp
 
 def calc_diff(nbits):
+    gen = '1d00ffff'
+    gen_target = set_bit(gen)
+    gen_target = '0x'+gen_target
+    gen_target = int(gen_target,16)
 print('difficulty:',calc_diff(nbits))
 
 start = '0x'+nonce
