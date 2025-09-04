@@ -495,3 +495,6 @@ def print_headerinfo(head):
 ver, pre_hash, mroot, ntime, nbits, nonce = print_headerinfo(head)
 
 def set_bit(nbits):
+    nbit_len = nbits[:2]
+    nbit_len = '0x'+nbit_len
+    nbit_len = int(nbit_len,16)
