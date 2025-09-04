@@ -493,3 +493,5 @@ def print_headerinfo(head):
     return ver, pre_hash, mroot, ntime, nbits, nonce 
 
 ver, pre_hash, mroot, ntime, nbits, nonce = print_headerinfo(head)
+
+def set_bit(nbits):
