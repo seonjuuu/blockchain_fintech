@@ -498,3 +498,10 @@ def set_bit(nbits):
     nbit_len = nbits[:2]
     nbit_len = '0x'+nbit_len
     nbit_len = int(nbit_len,16)
+
+    tmp = nbits[2:]
+    while len(tmp) != (nbit_len<<1):
+        tmp = tmp+'00'
+    while len(tmp) != 64:
+        tmp = '00'+tmp
+    return tmp
