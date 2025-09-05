@@ -530,8 +530,12 @@ start = start-10
 
 def find_nonce(ver, pre_hash, mroot, ntime, nbits, start): #nonce대신start넣어줌 
 
-     ver_t = hex_to_little_endian_str(ver,len(ver))
+    ver_t = hex_to_little_endian_str(ver,len(ver))
     pre_ht = hex_to_little_endian_str(pre_hash,len(pre_hash))
     mroot_t = hex_to_little_endian_str(mroot,len(mroot))
     ntime_t = hex_to_little_endian_str(ntime, len(ntime))
     nbits_t = hex_to_little_endian_str(nbits, len(nbits))
+
+    ct = set_bit(nbits)
+    ct = '0x' + ct
+    ct = int(ct,16)
