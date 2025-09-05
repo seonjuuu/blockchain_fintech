@@ -539,3 +539,7 @@ def find_nonce(ver, pre_hash, mroot, ntime, nbits, start): #nonce대신start넣�
     ct = set_bit(nbits)
     ct = '0x' + ct
     ct = int(ct,16)
+    
+    for i in range(0,20):
+        tmp = start + i      # tmp는 nonce 후보 (i가 10일때 나와야함)
+        tmp = dec_to_little_endian_str(tmp,4)
