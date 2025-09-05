@@ -526,3 +526,6 @@ print('difficulty:',calc_diff(nbits))
 start = '0x'+nonce
 start = int(start,16)
 start = start-10
+
+
+def find_nonce(ver, pre_hash, mroot, ntime, nbits, start): #nonce대신start넣어줌 
