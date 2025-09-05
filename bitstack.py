@@ -543,3 +543,9 @@ def find_nonce(ver, pre_hash, mroot, ntime, nbits, start): #nonce대신start넣�
     for i in range(0,20):
         tmp = start + i      # tmp는 nonce 후보 (i가 10일때 나와야함)
         tmp = dec_to_little_endian_str(tmp,4)
+
+        #header 조립
+        tmp_h = ver_t + pre_ht + mroot_t + ntime_t + nbits_t + tmp
+        tmp_h = dbl_sha(tmp_h)
+        tmp_h = hex_to_little_endian_str(tmp_h,len(tmp_h))
+        
