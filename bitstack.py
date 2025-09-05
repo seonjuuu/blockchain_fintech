@@ -528,6 +528,7 @@ start = int(start,16)
 start = start-10
 
 
+# 주어진 헤더 정보와 시작 nonce로 valid 블록 nonce 탐색
 def find_nonce(ver, pre_hash, mroot, ntime, nbits, start): #nonce대신start넣어줌 
 
     ver_t = hex_to_little_endian_str(ver,len(ver))
