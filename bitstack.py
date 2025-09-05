@@ -555,3 +555,4 @@ def find_nonce(ver, pre_hash, mroot, ntime, nbits, start): #nonce대신start넣�
         if(num<ct):
             print("tmp_h:",tmp_h)
             print("nonce", little_to_big(tmp))
+find_nonce(ver, pre_hash, mroot, ntime, nbits, start)            
