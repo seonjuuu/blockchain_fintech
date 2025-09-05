@@ -549,3 +549,9 @@ def find_nonce(ver, pre_hash, mroot, ntime, nbits, start): #nonce대신start넣�
         tmp_h = dbl_sha(tmp_h)
         tmp_h = hex_to_little_endian_str(tmp_h,len(tmp_h))
         
+        num = '0x' + tmp_h
+        num = int(num,16)
+        
+        if(num<ct):
+            print("tmp_h:",tmp_h)
+            print("nonce", little_to_big(tmp))
