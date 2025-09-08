@@ -242,6 +242,9 @@ def ecdsa_verify(m,r,s,qx,qy):
     u2 = (r*sinv)%n
     X, Y, Z = kmul(u1, gx, gy, 1)
     X2,Y2,Z2 = kmul(u2,qx,qy,1)
+    Zinv = mod_inv(Z,p)
+    u1x = (X*Zinv)%p
+    u1y = (Y*Zinv)%p
 def ecdsa_sigver(msg,r,s,Qx,Qy):
     ret = 0
     #  r과 s 중 하나라도 주어진 범위에 속하지 않으면 ret 값을 0으로 설정하고 반환(둘다 범위안에 속한다면 return ret=0)
