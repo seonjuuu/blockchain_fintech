@@ -233,6 +233,8 @@ def ecdsa_siggen(msg,d):
     
 r, s = ecdsa_siggen("abc",d)   #메세지:'abc' , 개인키:d => 서명값 : (r,s)
 
+
+# 서명 (r, s)가 공개키(qx, qy)와 메시지 m에 대해 유효한지 검증
 def ecdsa_verify(m,r,s,qx,qy):
     emsg = m.encode()
     h = hashlib.sha256(emsg).hexdigest()
@@ -253,6 +255,7 @@ def ecdsa_verify(m,r,s,qx,qy):
         return 1
     else:
         return 0
+
 
 def ecdsa_sigver(msg,r,s,Qx,Qy):
     ret = 0
