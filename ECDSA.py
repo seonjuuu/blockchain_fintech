@@ -233,6 +233,7 @@ def ecdsa_siggen(msg,d):
     
 r, s = ecdsa_siggen("abc",d)   #메세지:'abc' , 개인키:d => 서명값 : (r,s)
 
+def ecdsa_verify(m,r,s,qx,qy):
 
 def ecdsa_sigver(msg,r,s,Qx,Qy):
     ret = 0
