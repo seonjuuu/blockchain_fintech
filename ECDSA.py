@@ -199,6 +199,9 @@ def dec_to_little_endian_str(n,tlen):
     return ret
 
 
+def hex_to_little_endian_str(n,tlen):
+
+
 
 
 ### ECDSA ### 
