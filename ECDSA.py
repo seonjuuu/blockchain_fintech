@@ -186,6 +186,11 @@ chk = (X*zinv)%p
 print("[23]P kmul:",chk)
 
 
+def dec_to_little_endian_str(n,tlen):
+
+
+
+
 ### ECDSA ### 
 def ecdsa_keygen() :
     # 개인키 선택
