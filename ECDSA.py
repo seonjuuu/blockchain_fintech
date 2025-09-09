@@ -210,6 +210,7 @@ def hex_to_little_endian_str(n,tlen):
         ret = ret+n_str[i]
     return ret
 
+# 인코딩
 def base58encode(n):
     b58="123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
     tmp = n
@@ -219,6 +220,10 @@ def base58encode(n):
         txt = txt + b58[idx]
         tmp = tmp//58 #수정할 부분
     return txt[::-1]
+
+
+def base58_to_hex(n):
+
 
 
 
