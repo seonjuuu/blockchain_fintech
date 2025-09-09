@@ -236,6 +236,11 @@ def base58_to_hex(n):
     return hex(ret)[2:]
 
 
+def wallet_to_pub(n):
+    pub = n[2:len(n)-8]
+    return pub , (len(pub)>>1)
+
+
 
 
 ### ECDSA ### 
