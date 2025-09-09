@@ -186,6 +186,7 @@ chk = (X*zinv)%p
 print("[23]P kmul:",chk)
 
 
+# 정수를 little-endian 형식의 hex 문자열로 변환
 def dec_to_little_endian_str(n,tlen):
     n_str = hex(n)
     n_str = n_str[2:]
