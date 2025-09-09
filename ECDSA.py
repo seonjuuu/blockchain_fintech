@@ -222,6 +222,7 @@ def base58encode(n):
     return txt[::-1]
 
 
+# Base58 인코딩된 비트코인 주소를 hex로 디코딩
 def base58_to_hex(n):
     b58="123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
     tmp = n
