@@ -211,7 +211,9 @@ def hex_to_little_endian_str(n,tlen):
     return ret
 
 def base58encode(n):
-
+    b58="123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+    tmp = n
+    txt=""
 
 
 
