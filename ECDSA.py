@@ -187,6 +187,8 @@ print("[23]P kmul:",chk)
 
 
 def dec_to_little_endian_str(n,tlen):
+    n_str = hex(n)
+    n_str = n_str[2:]
 
 
 
