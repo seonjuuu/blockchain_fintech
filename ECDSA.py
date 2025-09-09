@@ -223,6 +223,11 @@ def base58encode(n):
 
 
 def base58_to_hex(n):
+    b58="123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+    tmp = n
+    tmp = tmp[::-1]
+    exp =0
+    ret =0
 
 
 
