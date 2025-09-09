@@ -200,6 +200,10 @@ def dec_to_little_endian_str(n,tlen):
 
 
 def hex_to_little_endian_str(n,tlen):
+    n_str = n
+    while len(n_str)  != (tlen):
+        n_str = '0' + n_str
+    ret=''
 
 
 
