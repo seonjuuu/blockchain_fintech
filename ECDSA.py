@@ -210,6 +210,8 @@ def hex_to_little_endian_str(n,tlen):
         ret = ret+n_str[i]
     return ret
 
+def base58encode(n):
+
 
 
 
