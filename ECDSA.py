@@ -214,6 +214,11 @@ def base58encode(n):
     b58="123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
     tmp = n
     txt=""
+    while tmp>0:
+        idx = tmp%58
+        txt = txt + b58[idx]
+        tmp = tmp//58 #수정할 부분
+    return txt[::-1]
 
 
 
