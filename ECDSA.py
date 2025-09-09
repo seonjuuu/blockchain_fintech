@@ -204,6 +204,10 @@ def hex_to_little_endian_str(n,tlen):
     while len(n_str)  != (tlen):
         n_str = '0' + n_str
     ret=''
+    for i in range(len(n_str)-1,-1,-2):
+        ret = ret+n_str[i-1]
+        ret = ret+n_str[i]
+    return ret
 
 
 
