@@ -11,6 +11,7 @@ class transaction:
         self.data = fromAddr+toAddr+hex(amount)[2:]
         self.sig =''
 
+    # 개인 키를 사용해 트랜잭션에 ECDSA 서명을 생성
     def signTransaction(self,priv):
         r,s = ecdsa_siggen(self.data,priv)
         self.sig = hex(r)[2:]+hex(s)[2:]
