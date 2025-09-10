@@ -8,3 +8,5 @@ class transaction:
         self.amount = amount #int
         self.data = fromAddr+toAddr+hex(amount)[2:]
         self.sig =''
+
+    def signTransaction(self,priv):
