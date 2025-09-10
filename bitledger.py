@@ -2,6 +2,8 @@ import hashlib
 from ECDSA import *
 
 class transaction:
+
+    # 송신자, 수신자, 금액을 입력받아 트랜잭션 데이터 생성
     def __init__(self, fromAddr,toAddr, amount):
         self.fromAddr = fromAddr #str
         self.toAddr = toAddr #str
