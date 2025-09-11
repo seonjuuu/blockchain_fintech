@@ -26,3 +26,12 @@ class transaction:
         
         r = int(self.sig[:self.rlen],16)%n
         s = int(self.sig[self.rlen:],16)%n
+
+        qx = pub[:44]
+        qy = pub[44:]
+
+        qx = base58_to_hex(qx)
+        qy = base58_to_hex(qy)
+
+        qx = int(qx, 16)%n
+        qy = int(qy, 16)%n
