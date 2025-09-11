@@ -19,6 +19,7 @@ class transaction:
         self.slen = len(hex(s)[2:])
 
 
+    # 공개 키로 트랜잭션의 서명을 검증
     def isTransValid(self, pub):
         if len(self.sig) == 0:
             print('no signature')
