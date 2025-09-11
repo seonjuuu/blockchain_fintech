@@ -53,4 +53,9 @@ class transaction:
 
 
 class block:
-    
+    def __init__(self,timestamp,trans,prehash):
+        self.timestamp = timestamp
+        self.trans = trans
+        self.prehash = prehash
+        self.nonce=0
+        self.hash = self.calchash()
