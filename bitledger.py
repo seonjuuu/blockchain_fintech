@@ -17,3 +17,6 @@ class transaction:
         self.sig = hex(r)[2:]+hex(s)[2:]
         self.rlen = len(hex(r)[2:])
         self.slen = len(hex(s)[2:])
+
+
+    def isTransValid(self, pub):
