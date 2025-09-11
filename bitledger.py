@@ -23,3 +23,6 @@ class transaction:
         if len(self.sig) == 0:
             print('no signature')
             return 0
+        
+        r = int(self.sig[:self.rlen],16)%n
+        s = int(self.sig[self.rlen:],16)%n
