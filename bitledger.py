@@ -50,3 +50,6 @@ class transaction:
         #if ecdsa_verify(self.data,r,s,qx,qy)==0:
         # 검증실패        
         # return 0 
+
+
+class block:
