@@ -20,3 +20,6 @@ class transaction:
 
 
     def isTransValid(self, pub):
+        if len(self.sig) == 0:
+            print('no signature')
+            return 0
