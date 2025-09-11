@@ -35,3 +35,17 @@ class transaction:
 
         qx = int(qx, 16)%n
         qy = int(qy, 16)%n
+
+        if ecdsa_verify(self.data, r, s, qx, qy) == 0:
+            return 0
+
+        return 1
+        
+        
+        ####(r,s)->검증
+        # r = self.sig[:self.rlen] -> integer
+        # s = self.sig[sig.rlen:] -> integer
+        # pub -> base58로 인코딩되어있는것을 다시 디코딩 / qx,qy 분해해서 넣어줌
+        #if ecdsa_verify(self.data,r,s,qx,qy)==0:
+        # 검증실패        
+        # return 0 
