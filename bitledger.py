@@ -76,3 +76,6 @@ class block:
         msg=hashlib.sha256(msg).hexdigest()
 
         return msg
+    
+
+    def merkleroot(self):
