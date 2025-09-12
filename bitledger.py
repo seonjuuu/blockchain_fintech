@@ -62,3 +62,6 @@ class block:
 
 
     def calchash(self):
+        #전체 string이라 가정
+        nstr = hex(self.nonce)
+        nstr = nstr[2:]
