@@ -61,6 +61,7 @@ class block:
         self.hash = self.calchash()
 
 
+    # 현재 블록의 해시값(SHA256)을 계산
     def calchash(self):
         #전체 string이라 가정
         nstr = hex(self.nonce)
