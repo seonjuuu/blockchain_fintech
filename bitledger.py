@@ -79,3 +79,8 @@ class block:
     
 
     def merkleroot(self):
+        tmp=[]
+        for i in self.trans:
+            tmp.append(i.data)
+        if len(tmp)&1!=0:
+            tmp.append(tmp[len(tmp)-1])
