@@ -65,3 +65,13 @@ class block:
         #전체 string이라 가정
         nstr = hex(self.nonce)
         nstr = nstr[2:]
+
+        data = ''
+        for i in self.trans:
+            data = data + i.data
+            
+        msg=self.timestamp+data+self.prehash+nstr
+        msg=msg.encode()
+        msg=hashlib.sha256(msg).hexdigest()
+
+        return msg
