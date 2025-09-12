@@ -78,6 +78,7 @@ class block:
         return msg
     
 
+    # 블록 내 트랜잭션들의 머클루트(Merkle Root)를 계산
     def merkleroot(self):
         tmp=[]
         for i in self.trans:
