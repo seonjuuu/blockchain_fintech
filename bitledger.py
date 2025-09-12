@@ -84,3 +84,21 @@ class block:
             tmp.append(i.data)
         if len(tmp)&1!=0:
             tmp.append(tmp[len(tmp)-1])
+
+        while done == 0:
+            for i in range(0,cnt):
+                for i in range(0,cnt):
+                    h=tmp[i<<1]+tmp[(i<<1)+1]
+                    h=h.encode()
+                    h=hashlib.sha256(h).hexdigest()
+                    tmp[i]=h
+                if cnt==1:
+                    done=1
+                else:
+                    done=0
+                    if cnt&1!=0:
+                        tmp[cnt]+tmp[cnt-1]
+                        cnt=cnt+1
+                        cnt=cnt>>1
+                    else:
+                        cnt=cnt>>1
