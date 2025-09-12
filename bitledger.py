@@ -85,6 +85,8 @@ class block:
         if len(tmp)&1!=0:
             tmp.append(tmp[len(tmp)-1])
 
+        done=0
+        cnt = len(tmp)>>1
         while done == 0:
             for i in range(0,cnt):
                 for i in range(0,cnt):
@@ -102,3 +104,5 @@ class block:
                         cnt=cnt>>1
                     else:
                         cnt=cnt>>1
+                        
+        return tmp[0]
