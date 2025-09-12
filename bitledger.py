@@ -59,3 +59,6 @@ class block:
         self.prehash = prehash
         self.nonce=0
         self.hash = self.calchash()
+
+
+    def calchash(self):
