@@ -107,3 +107,4 @@ class block:
                         cnt=cnt>>1
                         
         return tmp[0]
+    
