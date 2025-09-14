@@ -108,3 +108,5 @@ class block:
                         
         return tmp[0]
     
+
+    def mineblock(self,difficulty):
