@@ -109,6 +109,7 @@ class block:
         return tmp[0]
     
 
+    # 주어진 난이도 조건을 만족하는 블록 해시를 찾을 때까지 논스를 증가시켜 마이닝 수행
     def mineblock(self,difficulty):
         nonce=0
         msg = self.hash
