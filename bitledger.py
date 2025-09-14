@@ -116,3 +116,6 @@ class block:
         cmp=''
         for i in range(0,difficulty):
             cmp = cmp+'0' #if difficulty=4 -> '0000'
+
+        data=self.merkleroot()
+        print("data:",data)
