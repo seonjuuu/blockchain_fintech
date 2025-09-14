@@ -133,6 +133,8 @@ class block:
 
 
 class blockchain:
+
+    # 제네시스 블록을 생성하고 체인을 초기화
     def __init__(self):
         self.chain=[]
         gen_block = block('20231111',[transaction('0','0',100)],'0')
