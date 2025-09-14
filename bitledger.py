@@ -133,3 +133,11 @@ class block:
 
 
 class blockchain:
+    def __init__(self):
+        self.chain=[]
+        gen_block = block('20231111',[transaction('0','0',100)],'0')
+        self.chain.append(gen_block)
+        self.len =1
+        self.mempool=[]
+        self.difficulty=4
+        self.reward = 100
