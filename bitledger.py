@@ -119,3 +119,13 @@ class block:
 
         data=self.merkleroot()
         print("data:",data)
+
+        while (msg[:difficulty]!=cmp):
+            nonce=nonce+1
+            nstr=hex(nonce)
+            nstr = nstr[2:]
+            msg = self.timestamp+data+self.prehash+nstr
+            msg = msg.encode()
+            msg = hashlib.sha256(msg).hexdigest()
+        self.hash = msg
+        self.nonce = nonce
