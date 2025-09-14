@@ -110,3 +110,9 @@ class block:
     
 
     def mineblock(self,difficulty):
+        nonce=0
+        msg = self.hash
+        
+        cmp=''
+        for i in range(0,difficulty):
+            cmp = cmp+'0' #if difficulty=4 -> '0000'
