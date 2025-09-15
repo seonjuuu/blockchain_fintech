@@ -143,3 +143,4 @@ class blockchain:
         self.mempool=[]
         self.difficulty=4
         self.reward = 100
+        
