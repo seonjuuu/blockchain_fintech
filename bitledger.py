@@ -157,3 +157,5 @@ class blockchain:
         
     
     def addTransactions(self,trans):
+        if trans.isTransValid(trans.fromAddr)==1:
+            self.mempool.append(trans)
