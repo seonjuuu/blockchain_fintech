@@ -156,6 +156,7 @@ class blockchain:
         self.mempool.append(transaction('0',rewardAddr,self.reward))
         
     
+    # 유효성 검증된 트랜잭션만 메모리풀에 추가
     def addTransactions(self,trans):
         if trans.isTransValid(trans.fromAddr)==1:
             self.mempool.append(trans)
