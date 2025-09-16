@@ -143,4 +143,7 @@ class blockchain:
         self.mempool=[]
         self.difficulty=4
         self.reward = 100
+
+
+    def mineMempool(self,rewardAddr,timestamp):
         
