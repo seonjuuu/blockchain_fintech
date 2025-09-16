@@ -165,3 +165,6 @@ class blockchain:
     # 체인의 마지막 블록을 반환
     def getlatestblock(self):
         return self.chain[self.len-1]
+    
+
+    def addBlock(self,timestamp,data,difficulty):
