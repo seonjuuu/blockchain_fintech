@@ -168,3 +168,8 @@ class blockchain:
     
 
     def addBlock(self,timestamp,data,difficulty):
+        newblock = block(timestamp,data,'')
+        newblock.prehash = self.getlatestblock().hash
+        newblock.mineblock(difficulty)
+        self.chain.append(newblock)
+        self.len = self.len +1
