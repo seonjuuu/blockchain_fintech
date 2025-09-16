@@ -155,3 +155,5 @@ class blockchain:
         self.mempool=[]
         self.mempool.append(transaction('0',rewardAddr,self.reward))
         
+    
+    def addTransactions(self,trans):
