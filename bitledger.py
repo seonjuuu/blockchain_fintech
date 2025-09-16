@@ -145,6 +145,7 @@ class blockchain:
         self.reward = 100
 
 
+    # 메모리풀의 트랜잭션을 블록으로 마이닝하고 채굴 보상을 보상 주소로 전송
     def mineMempool(self,rewardAddr,timestamp):
         newblock = block(timestamp,self.mempool,'') # mempool안에 모든 transaction을 mine 함
         newblock.prehash = self.getlatestblock().hash
