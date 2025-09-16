@@ -149,3 +149,8 @@ class blockchain:
         newblock = block(timestamp,self.mempool,'') # mempool안에 모든 transaction을 mine 함
         newblock.prehash = self.getlatestblock().hash
         newblock.mineblock(self.difficulty)
+        self.chain.append(newblock)
+        self.len = self.len +1
+        self.mempool=[]
+        self.mempool.append(transaction('0',rewardAddr,self.reward))
+        
