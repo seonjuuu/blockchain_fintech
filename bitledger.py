@@ -167,6 +167,7 @@ class blockchain:
         return self.chain[self.len-1]
     
 
+    # 외부 데이터로 새 블록을 생성하고 체인에 추가
     def addBlock(self,timestamp,data,difficulty):
         newblock = block(timestamp,data,'')
         newblock.prehash = self.getlatestblock().hash
