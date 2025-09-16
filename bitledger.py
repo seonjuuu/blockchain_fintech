@@ -162,5 +162,6 @@ class blockchain:
             self.mempool.append(trans)
 
 
+    # 체인의 마지막 블록을 반환
     def getlatestblock(self):
         return self.chain[self.len-1]
