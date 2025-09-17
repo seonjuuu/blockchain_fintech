@@ -187,7 +187,7 @@ class blockchain:
                     balance = balance + j.amount
         return balance
     
-    
+
     # 블록체인의 무결성을 검사 (해시값 및 이전 해시 비교)
     def isChainValid(self):
         for i in range(1, self.len):
@@ -198,3 +198,5 @@ class blockchain:
             if currBlock.prehash != preBlock.hash:
                 return 0
         return 1
+    
+    def printBlock(self,idx):
