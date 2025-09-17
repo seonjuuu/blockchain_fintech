@@ -174,7 +174,7 @@ class blockchain:
         newblock.mineblock(difficulty)
         self.chain.append(newblock)
         self.len = self.len +1
-        
+
 
     # 주소별 잔액을 계산하여 반환
     def getBalance(self,addr):
@@ -186,3 +186,6 @@ class blockchain:
                 if j.toAddr ==addr:
                     balance = balance + j.amount
         return balance
+    
+
+    def isChainValid(self):
