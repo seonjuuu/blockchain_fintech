@@ -175,6 +175,7 @@ class blockchain:
         self.chain.append(newblock)
         self.len = self.len +1
 
+    # 주소별 잔액을 계산하여 반환
     def getBalance(self,addr):
         balance =0
         for i in self.chain:
