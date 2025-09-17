@@ -176,3 +176,11 @@ class blockchain:
         self.len = self.len +1
 
     def getBalance(self,addr):
+        balance =0
+        for i in self.chain:
+            for j in i.trans:
+                if j.fromAddr == addr:
+                    balance = balance - j.amount
+                if j.toAddr ==addr:
+                    balance = balance + j.amount
+        return balance
