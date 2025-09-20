@@ -13,3 +13,7 @@ PubKey = txt[(2+(sigLength<<1)):]
 
 seq = Sig[:2]
 print("seqence:",seq)
+
+Sig = Sig[2:]
+slen = Sig[:2]
+print("script leng=real sig len",slen)
