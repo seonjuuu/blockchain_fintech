@@ -213,3 +213,10 @@ class blockchain:
             print("timestamp:",self.chain[i].timestamp)
             print("==transactions==")
             cnt = 0
+            for j in self.chain[i].trans:
+                print("* transaction no #",cnt)
+                print(" from:", j.fromAddr)
+                print(" to:",j.toAddr)
+                print(" amount:",j.amount)
+                print(" sig:",j.sig)
+                cnt=cnt+1
