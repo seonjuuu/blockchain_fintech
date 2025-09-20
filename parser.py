@@ -17,3 +17,7 @@ print("seqence:",seq)
 Sig = Sig[2:]
 slen = Sig[:2]
 print("script leng=real sig len",slen)
+
+Sig = Sig[2:] #Tag
+tag = Sig[:2]
+print("Tag:",tag)
