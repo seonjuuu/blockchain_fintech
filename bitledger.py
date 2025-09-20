@@ -206,3 +206,5 @@ class blockchain:
         print("prehash:",self.chain[idx].prehash)
         print("hash:",self.chain[idx].hash)
         print("")
+
+    def printBlockchain(self):
