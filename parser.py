@@ -43,3 +43,6 @@ Sig = Sig[2:]
 slen = str_to_hex(slen)
 s = Sig[:slen]
 print("s:",s)
+
+htype = Sig[slen:]
+print("hash type:",htype)
