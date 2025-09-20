@@ -38,3 +38,8 @@ print("tag s:",tag)
 Sig = Sig[2:]
 slen = Sig[:2]
 print("slen:",slen)
+
+Sig = Sig[2:]
+slen = str_to_hex(slen)
+s = Sig[:slen]
+print("s:",s)
