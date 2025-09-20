@@ -34,3 +34,7 @@ print('r',r)
 
 tag = Sig[:2]
 print("tag s:",tag)
+
+Sig = Sig[2:]
+slen = Sig[:2]
+print("slen:",slen)
