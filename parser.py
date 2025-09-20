@@ -21,3 +21,7 @@ print("script leng=real sig len",slen)
 Sig = Sig[2:] #Tag
 tag = Sig[:2]
 print("Tag:",tag)
+
+Sig = Sig[2:]
+rlen = Sig[:2]
+print("rlen:",rlen)
