@@ -25,3 +25,9 @@ print("Tag:",tag)
 Sig = Sig[2:]
 rlen = Sig[:2]
 print("rlen:",rlen)
+
+rlen = str_to_hex(rlen)  # r의 길이는 정해지지않아서 모름 -> rlen을 이용하여 rlen을 hex로 바꿔줘서 그만큼의 길이를 뗴어주면 = r 
+Sig = Sig[2:] #Sigr
+r = Sig[:rlen]   
+Sig = Sig[rlen:]
+print('r',r)
