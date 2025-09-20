@@ -46,3 +46,9 @@ print("s:",s)
 
 htype = Sig[slen:]
 print("hash type:",htype)
+
+# publickey
+plen = PubKey[:2]
+print("plen",plen)
+pk = PubKey[2:]
+print("pk:",pk)
