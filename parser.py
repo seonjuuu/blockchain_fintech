@@ -10,3 +10,6 @@ sigLength = str_to_hex(sigLength)
 #signature
 Sig = txt[2:2+(sigLength<<1)]
 PubKey = txt[(2+(sigLength<<1)):]
+
+seq = Sig[:2]
+print("seqence:",seq)
