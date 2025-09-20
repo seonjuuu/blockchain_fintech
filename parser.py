@@ -3,3 +3,10 @@ txt='483045022100d2dc378542d152d6f568b5c8e491d809f3a634fc690092b29c44795e0fd69cf
 def str_to_hex(n):
     tmp = '0x'+n
     return(int(tmp,16)<<1)
+
+sigLength = txt[0:2] #한바이트를 끊기위해서는 2개씩 끊어야함
+print("Siglength:", sigLength)
+sigLength = str_to_hex(sigLength)
+#signature
+Sig = txt[2:2+(sigLength<<1)]
+PubKey = txt[(2+(sigLength<<1)):]
