@@ -31,3 +31,6 @@ Sig = Sig[2:] #Sigr
 r = Sig[:rlen]   
 Sig = Sig[rlen:]
 print('r',r)
+
+tag = Sig[:2]
+print("tag s:",tag)
