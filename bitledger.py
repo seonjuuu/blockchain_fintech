@@ -220,3 +220,9 @@ class blockchain:
                 print(" amount:",j.amount)
                 print(" sig:",j.sig)
                 cnt=cnt+1
+            print("==============")    
+            print("prehash:",self.chain[i].prehash)
+            print("hash:",self.chain[i].hash)
+            print("nonce:",self.chain[i].nonce)
+            print("")
+        print("mempool:",self.mempool)
