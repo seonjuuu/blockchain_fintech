@@ -93,3 +93,4 @@ def pt_add(px,py, qx,qy):
     rx = (t0**2-px-qx)%p
     ry = (t0*(px-rx)-py)%p
     return rx, ry
+
