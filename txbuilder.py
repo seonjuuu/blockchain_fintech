@@ -157,6 +157,7 @@ def kmul(k, X, Y, Z):
     return tx, ty, tz
 
 
+# 정수 n을 지정 길이의 little-endian 16진 문자열로 변환
 def dec_to_little_endian_str(n,tlen):
     n_str = hex(n)
     n_str = n_str[2:]
