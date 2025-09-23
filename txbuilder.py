@@ -291,6 +291,7 @@ out1=[0.03664619,'mt6URnuGsPZxDAPYLEBypA4BBbZ36cH9yv']
 out2=[0.0172902,'mvqjQUERnKZbH9knpka5HEsQ9eraQrEQQa']
 
 
+# 출력 트랜잭션 정보 생성 (수신자 주소와 금액 포함)
 def tx_out(outcnt, *out):
     ret=dec_to_little_endian_str(outcnt,1)
 
