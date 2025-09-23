@@ -269,6 +269,8 @@ def form_length(n):
 incnt = 2
 inn0=['7b46bff49c3eeb7b10c37aca0b930e06bae473f99f34e9c9f45451653847ed6b',0]
 inn1=['7b46bff49c3eeb7b10c37aca0b930e06bae473f99f34e9c9f45451653847ed6b',1]
+
+# 입력 트랜잭션 헤더와 input 목록 생성
 def tx_in(incnt, *inn):
     ver='01000000'
     in_str = dec_to_little_endian_str(incnt,1)
