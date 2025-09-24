@@ -343,6 +343,7 @@ def gen_script_sig(r,s,qx,qy):
     return total_len, script
 
 
+# 서명 포함 트랜잭션을 구성하고 txid 생성
 def gen_txid(head, inn, out, add, d, qx, qy):
     tlen_list=[]
     script_list=[]
