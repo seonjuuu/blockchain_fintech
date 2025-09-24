@@ -348,3 +348,17 @@ def gen_txid(head, inn, out, add, d, qx, qy):
     script_list=[]
     addlen = len(add)>>1
     addlen = dec_to_little_endian_str(addlen,1)
+    for i in range(0, len(inn)):
+        msg=""
+        for j in range(0, i):
+            msg = msg + inn[j] + '00'+'ffffffff'
+        msg = msg + inn[i] +addlen + add +'ffffffff'
+
+        for j in range(i+1,len(inn)):
+            msg = msg + inn[j] +'00'+'ffffffff'
+        msg = head + msg
+        msg = msg + out + '01000000'
+        r,s = ecdsa_siggen(msg,d)
+        tlen, script = gen_script_sig(r,s,qx,qy)
+        tlen_list.append(tlen)
+        script_list.append(script)
