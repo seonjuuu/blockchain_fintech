@@ -195,6 +195,8 @@ def base58_to_hex(n):
         exp=exp+1
     return hex(ret)[2:]
 
+
+# 비트코인 주소에서 공개키 해시만 추출
 def wallet_to_pub(n):
     pub = n[2:len(n)-8]
     return pub , (len(pub)>>1)
