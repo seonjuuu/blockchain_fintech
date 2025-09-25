@@ -427,3 +427,5 @@ def gen_merkle_root(*txid):
         msg =hex(msg)[2:].encode()
         ret = hashlib.sha256(msg).hexdigest()
     return ret
+
+print(gen_merkle_root(tx1,tx2,tx3))
